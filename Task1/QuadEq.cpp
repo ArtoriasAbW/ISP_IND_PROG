@@ -136,6 +136,10 @@ int main() {
     double a, b, c;
     std::cout << "Enter the coefficients a, b, c of the quadratic equation\n";
     std::cin >> a >> b >> c;
+    if (std::cin.fail()) {
+        std::cout << "Invalid input.\nExit.\n";
+        return 1;
+    }
     double root1, root2;
     int numOfRoots = SolveQuadEq(a, b, c, root1, root2);
     if (numOfRoots == constants::INF) { 
