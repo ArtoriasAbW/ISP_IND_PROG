@@ -18,7 +18,7 @@ namespace constants {
 */
 bool isZero(double x) {
     assert(std::isfinite(x));
-    if (fabs(x) < constants::eps) {
+    if (fabs(x) <= constants::eps) {
         return true;
     }
     return false;
@@ -113,7 +113,7 @@ void TestSolveQuadEq() {
 
     assert(SolveQuadEq(1, 2, 1, root1, root2) == 1);
     assert(root1 == -1);
-    
+
     assert(SolveQuadEq(1, 5, 423, root1, root2) == 0);
 
     assert(SolveQuadEq(1, 5, 6, root1, root2) == 2);
