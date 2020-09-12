@@ -1,0 +1,111 @@
+\hypertarget{QuadEq_8cpp}{}\doxysection{Quad\+Eq.\+cpp File Reference}
+\label{QuadEq_8cpp}\index{QuadEq.cpp@{QuadEq.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+Include dependency graph for Quad\+Eq.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{QuadEq_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{QuadEq_8cpp_aa183967a7a915749e9800658481403e8}{is\+Zero}} (double x)
+\item 
+int \mbox{\hyperlink{QuadEq_8cpp_adee320a33babe24047349964e16fbaf5}{Solve\+Lin\+Eq}} (double b, double c, double \&root)
+\item 
+int \mbox{\hyperlink{QuadEq_8cpp_afc281eebe0c8aee297e1bccaedbd5888}{Solve\+Quad\+Eq}} (double a, double b, double c, double \&root1, double \&root2)
+\item 
+\mbox{\Hypertarget{QuadEq_8cpp_a1cae3086cea307dd75fd796256a35183}\label{QuadEq_8cpp_a1cae3086cea307dd75fd796256a35183}} 
+void {\bfseries Test\+Solve\+Lin\+Eq} ()
+\item 
+\mbox{\Hypertarget{QuadEq_8cpp_a46b6450c76cb98e2665aace03425aee2}\label{QuadEq_8cpp_a46b6450c76cb98e2665aace03425aee2}} 
+void {\bfseries Test\+Solve\+Quad\+Eq} ()
+\item 
+\mbox{\Hypertarget{QuadEq_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{QuadEq_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{QuadEq_8cpp_a1e966e713032ef496e5f3858b21a3ee9}\label{QuadEq_8cpp_a1e966e713032ef496e5f3858b21a3ee9}} 
+double {\bfseries constants\+::eps} = 0.\+000001
+\item 
+\mbox{\Hypertarget{QuadEq_8cpp_a17ad4e1d3f7b50a3baebd6eee7a71aea}\label{QuadEq_8cpp_a17ad4e1d3f7b50a3baebd6eee7a71aea}} 
+int {\bfseries constants\+::\+I\+NF} = -\/1
+\item 
+\mbox{\Hypertarget{QuadEq_8cpp_a2e0fd2312eba005a8ae270b8e886670f}\label{QuadEq_8cpp_a2e0fd2312eba005a8ae270b8e886670f}} 
+int {\bfseries constants\+::precision} = 6
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{QuadEq_8cpp_aa183967a7a915749e9800658481403e8}\label{QuadEq_8cpp_aa183967a7a915749e9800658481403e8}} 
+\index{QuadEq.cpp@{QuadEq.cpp}!isZero@{isZero}}
+\index{isZero@{isZero}!QuadEq.cpp@{QuadEq.cpp}}
+\doxysubsubsection{\texorpdfstring{isZero()}{isZero()}}
+{\footnotesize\ttfamily bool is\+Zero (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+Checks double value for proximity to zero 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & some double value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the argument is close to zero 
+\end{DoxyReturn}
+\mbox{\Hypertarget{QuadEq_8cpp_adee320a33babe24047349964e16fbaf5}\label{QuadEq_8cpp_adee320a33babe24047349964e16fbaf5}} 
+\index{QuadEq.cpp@{QuadEq.cpp}!SolveLinEq@{SolveLinEq}}
+\index{SolveLinEq@{SolveLinEq}!QuadEq.cpp@{QuadEq.cpp}}
+\doxysubsubsection{\texorpdfstring{SolveLinEq()}{SolveLinEq()}}
+{\footnotesize\ttfamily int Solve\+Lin\+Eq (\begin{DoxyParamCaption}\item[{double}]{b,  }\item[{double}]{c,  }\item[{double \&}]{root }\end{DoxyParamCaption})}
+
+Solves a linear equation bx + c = 0
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em b} & b-\/coefficient \\
+\hline
+\mbox{\texttt{ in}}  & {\em c} & c-\/coefficient \\
+\hline
+\mbox{\texttt{ out}}  & {\em root} & Reference to root\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of roots
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+In case of infinite number of roots, returns constants\+::\+I\+NF 
+\end{DoxyNote}
+\mbox{\Hypertarget{QuadEq_8cpp_afc281eebe0c8aee297e1bccaedbd5888}\label{QuadEq_8cpp_afc281eebe0c8aee297e1bccaedbd5888}} 
+\index{QuadEq.cpp@{QuadEq.cpp}!SolveQuadEq@{SolveQuadEq}}
+\index{SolveQuadEq@{SolveQuadEq}!QuadEq.cpp@{QuadEq.cpp}}
+\doxysubsubsection{\texorpdfstring{SolveQuadEq()}{SolveQuadEq()}}
+{\footnotesize\ttfamily int Solve\+Quad\+Eq (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b,  }\item[{double}]{c,  }\item[{double \&}]{root1,  }\item[{double \&}]{root2 }\end{DoxyParamCaption})}
+
+Solves a square equation ax$^\wedge$2 + bx + c = 0
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a} & a-\/coefficient \\
+\hline
+\mbox{\texttt{ in}}  & {\em b} & b-\/coefficient \\
+\hline
+\mbox{\texttt{ in}}  & {\em c} & c-\/coefficient \\
+\hline
+\mbox{\texttt{ out}}  & {\em root1} & Reference to first root \\
+\hline
+\mbox{\texttt{ out}}  & {\em root2} & Reference to second root\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of roots
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+In case of infinite number of roots, returns constants\+::\+I\+NF 
+\end{DoxyNote}

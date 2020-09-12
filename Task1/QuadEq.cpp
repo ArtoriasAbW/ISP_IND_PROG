@@ -10,7 +10,7 @@ namespace constants {
     int precision = 6;
 }
 
-//-----------------------------------------------------------------
+//-----------------------------------------------------------------------
 /*! Checks double value for proximity to zero
     @param [in] x some double value
     
@@ -23,7 +23,7 @@ bool isZero(double x) {
     }
     return false;
 }
-//-----------------------------------------------------------------
+//--------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------
@@ -76,16 +76,16 @@ int SolveQuadEq(double a, double b, double c, double &root1, double &root2) {
     assert(std::isfinite(a));
     assert(std::isfinite(b));
     assert(std::isfinite(c));
-    if (a == 0) {
+    if (isZero(a)) {
         return SolveLinEq(b, c, root1);
     }
     double d = b * b - 4 * a * c;
-    if (d > 0) {
+    if (d > constants::eps) {
         root1 = (-b + sqrt(d)) / (2 * a);
         root2 = (-b - sqrt(d)) / (2 * a);
         return 2;   
     }
-    if (d == 0) {   
+    if (isZero(d)) {   
         root1 = -b / (2 * a);
         return 1;
     }
@@ -113,6 +113,8 @@ void TestSolveQuadEq() {
 
     assert(SolveQuadEq(1, 2, 1, root1, root2) == 1);
     assert(root1 == -1);
+    
+    assert(SolveQuadEq(1, 5, 423, root1, root2) == 0);
 
     assert(SolveQuadEq(1, 5, 6, root1, root2) == 2);
     assert(root1 == -2 && root2 == -3);
