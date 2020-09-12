@@ -135,7 +135,7 @@ int main() {
     std::cout << "Square equation solver\n";
     TestSolveLinEq();
     TestSolveQuadEq();
-    double a, b, c;
+    double a = NAN, b = NAN, c = NAN;
     std::cout << "Enter the coefficients a, b, c of the quadratic equation\n";
     std::cin >> a >> b >> c;
     if (std::cin.fail()) {
