@@ -6,11 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.c
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c
+memory.h
+-
+MyQuickSort.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h
 TestTextSorter.h
 /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
 TextSorter.h
 /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
+
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h
+stddef.h
+-
+TextSorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
+TestTextSorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
 
 /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
 assert.h
@@ -27,10 +39,4 @@ sys/stat.h
 -
 zconf.h
 -
-
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/main.c
-TextSorter.h
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
-TestTextSorter.h
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
 

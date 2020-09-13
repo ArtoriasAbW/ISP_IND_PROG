@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c" "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles/Task2.dir/MyQuickSort.c.o"
   "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.c" "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles/Task2.dir/TestTextSorter.c.o"
   "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.c" "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles/Task2.dir/TextSorter.c.o"
   "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/main.c" "/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles/Task2.dir/main.c.o"

@@ -4,6 +4,7 @@
 
 #include "TestTextSorter.h"
 #include "TextSorter.h"
+#include "MyQuickSort.h"
 void TestReadInBuffer() {
     int fd = open("text.txt", O_RDWR | O_CREAT);
     int value = 7;
@@ -15,4 +16,8 @@ void TestReadInBuffer() {
     assert(buf == value);
     close(fd);
     printf("Testing ReadInBuffer done.\n");
+}
+
+void TestMyQuickSort() {
+
 }

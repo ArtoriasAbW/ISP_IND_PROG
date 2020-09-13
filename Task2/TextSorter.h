@@ -13,4 +13,5 @@
 
 char* ReadInBuffer();
 
+
 #endif //TASK2_TEXTSORTER_H

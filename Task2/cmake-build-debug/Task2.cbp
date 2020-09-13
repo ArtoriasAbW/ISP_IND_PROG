@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c">
+			<Option target="Task2"/>
+		</Unit>
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h">
+			<Option target="Task2"/>
+		</Unit>
 		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.c">
 			<Option target="Task2"/>
 		</Unit>

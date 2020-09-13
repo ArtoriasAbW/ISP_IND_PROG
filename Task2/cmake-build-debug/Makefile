@@ -143,6 +143,33 @@ Task2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/build
 .PHONY : Task2/fast
 
+MyQuickSort.o: MyQuickSort.c.o
+
+.PHONY : MyQuickSort.o
+
+# target to build an object file
+MyQuickSort.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/MyQuickSort.c.o
+.PHONY : MyQuickSort.c.o
+
+MyQuickSort.i: MyQuickSort.c.i
+
+.PHONY : MyQuickSort.i
+
+# target to preprocess a source file
+MyQuickSort.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/MyQuickSort.c.i
+.PHONY : MyQuickSort.c.i
+
+MyQuickSort.s: MyQuickSort.c.s
+
+.PHONY : MyQuickSort.s
+
+# target to generate assembly for a file
+MyQuickSort.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/MyQuickSort.c.s
+.PHONY : MyQuickSort.c.s
+
 TestTextSorter.o: TestTextSorter.c.o
 
 .PHONY : TestTextSorter.o
@@ -233,6 +260,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Task2"
+	@echo "... MyQuickSort.o"
+	@echo "... MyQuickSort.i"
+	@echo "... MyQuickSort.s"
 	@echo "... TestTextSorter.o"
 	@echo "... TestTextSorter.i"
 	@echo "... TestTextSorter.s"
