@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
+
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.c
+TextSorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
+
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
+fcntl.h
+-
+stdio.h
+-
+stdlib.h
+-
+sys/stat.h
+-
+zconf.h
+-
+
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/main.c
+TextSorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
+TestTextSorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
+
