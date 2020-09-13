@@ -3,6 +3,7 @@
 
 CMakeFiles/Task2.dir/TestTextSorter.c.o: ../TestTextSorter.c
 CMakeFiles/Task2.dir/TestTextSorter.c.o: ../TestTextSorter.h
+CMakeFiles/Task2.dir/TestTextSorter.c.o: ../TextSorter.h
 
 CMakeFiles/Task2.dir/TextSorter.c.o: ../TextSorter.c
 CMakeFiles/Task2.dir/TextSorter.c.o: ../TextSorter.h

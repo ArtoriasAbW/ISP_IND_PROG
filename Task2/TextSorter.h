@@ -11,6 +11,6 @@
 #include <sys/stat.h>
 #include <zconf.h>
 
-void work();
+char* ReadInBuffer();
 
 #endif //TASK2_TEXTSORTER_H

@@ -1,6 +1,7 @@
 #include "TextSorter.h"
 #include "TestTextSorter.h"
 int main() {
-    work();
+    TestReadInBuffer();
+    char* buffer = ReadInBuffer();
     return 0;
 }
