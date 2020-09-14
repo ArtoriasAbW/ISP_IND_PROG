@@ -6,6 +6,7 @@ CMakeFiles/Task2.dir/MyQuickSort.c.o: ../MyQuickSort.h
 CMakeFiles/Task2.dir/MyQuickSort.c.o: ../TestTextSorter.h
 CMakeFiles/Task2.dir/MyQuickSort.c.o: ../TextSorter.h
 
+CMakeFiles/Task2.dir/TestTextSorter.c.o: ../MyQuickSort.h
 CMakeFiles/Task2.dir/TestTextSorter.c.o: ../TestTextSorter.c
 CMakeFiles/Task2.dir/TestTextSorter.c.o: ../TestTextSorter.h
 CMakeFiles/Task2.dir/TestTextSorter.c.o: ../TextSorter.h

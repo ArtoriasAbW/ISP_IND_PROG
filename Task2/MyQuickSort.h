@@ -6,6 +6,7 @@
 #define TASK2_MYQUICKSORT_H
 
 #include <stddef.h>
+#include <memory.h>
 #include "TextSorter.h"
 #include "TestTextSorter.h"
 

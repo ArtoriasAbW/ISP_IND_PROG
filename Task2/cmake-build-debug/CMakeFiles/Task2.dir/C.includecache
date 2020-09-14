@@ -7,8 +7,6 @@
 #IncludeRegexTransform: 
 
 /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c
-memory.h
--
 MyQuickSort.h
 /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h
 TestTextSorter.h
@@ -18,6 +16,8 @@ TextSorter.h
 
 /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h
 stddef.h
+-
+memory.h
 -
 TextSorter.h
 /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h

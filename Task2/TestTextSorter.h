@@ -8,5 +8,5 @@
 #include <assert.h>
 void TestReadInBuffer();
 
-void TestMyQuickSort()
+void TestMyQuickSort();
 #endif //TASK2_TESTTEXTSORTER_H
