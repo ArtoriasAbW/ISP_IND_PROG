@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iomanip>
 #include <cassert>
+#include <climits>
 
 namespace constants {
     extern double eps;
@@ -20,6 +21,8 @@ namespace constants {
 */
 bool isZero(double x);
 
+
+bool isBig(double x);
 
 /*! Solves a linear equation bx + c = 0
 

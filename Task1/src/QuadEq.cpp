@@ -19,6 +19,11 @@ bool isZero(double x) {
 }
 
 
+bool isBig(double x) {
+   assert(std::isfinite(x));
+   return x < INT_MIN || x > INT_MAX;
+}
+
 int SolveLinEq(double b, double c, double &root) {
     assert(std::isfinite(b));
     assert(std::isfinite(c));
@@ -33,6 +38,9 @@ int SolveLinEq(double b, double c, double &root) {
         return 1;
     }
     root = -c / b;
+    if (isZero(root)) {
+        root = fabs(root);
+    }
     return 1;
 }
 
@@ -48,10 +56,19 @@ int SolveQuadEq(double a, double b, double c, double &root1, double &root2) {
     if (d > constants::eps) {
         root1 = (-b + sqrt(d)) / (2 * a);
         root2 = (-b - sqrt(d)) / (2 * a);
+    	if (isZero(root1)) {
+            root1 = fabs(root1);
+   	 }
+        if (isZero(root2)) {
+            root2 = fabs(root2);
+        }
         return 2;   
     }
     if (isZero(d)) {   
         root1 = -b / (2 * a);
+        if (isZero(root1)) {
+            root1 = fabs(root1);
+   	 }
         return 1;
     }
     return 0;
@@ -66,6 +83,10 @@ void Solver() {
     std::cin >> a >> b >> c;
     if (std::cin.fail()) {
         std::cout << "Invalid input.\nExit.\n";
+        exit(1);
+    }
+    if (isBig(a) || isBig(b) || isBig(c)) {
+        std::cout << "Coefficients are too big.\nExit\n";
         exit(1);
     }
     double root1, root2;

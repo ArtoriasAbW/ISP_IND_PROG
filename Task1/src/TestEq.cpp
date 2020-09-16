@@ -36,6 +36,8 @@ void TestSolveQuadEq() {
     assert(root1 == 0);
 
     assert(SolveQuadEq(0, 0, 0, root1, root2) == constants::INF);
+    assert(SolveQuadEq(1, 0, 0, root1, root2) == 1);
+    assert(root1 == 0);
 
     std::cerr << "TestSolveQuadEq Done\n";
 }
