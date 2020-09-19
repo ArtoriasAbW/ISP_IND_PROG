@@ -4,9 +4,9 @@
 
 #include "StructureCreator.h"
 
-Buffer WriteInBuffer() {
+Buffer WriteInBuffer(char* file_name) {
     char* buffer = NULL;
-    int f_descriptor = open("file.txt", O_RDONLY);
+    int f_descriptor = open(file_name, O_RDONLY);
     if (f_descriptor == -1) {
         printf("Failed to open file.\nExit.\n");
         exit(1);
@@ -28,7 +28,7 @@ Buffer WriteInBuffer() {
 }
 
 MyStringViews Create(Buffer *buffer) {
-    int capacity = 31;
+    int capacity = 20;
     MyStringView *lines = calloc(capacity, sizeof(*lines));
     int cur_size = 0;
     for (int i = 0; i < buffer->size;) {

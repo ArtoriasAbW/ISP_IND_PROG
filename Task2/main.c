@@ -3,18 +3,17 @@
 #include "Tests.h"
 
 int main() {
-    TestReadInBuffer();
+    TestWriteInBuffer();
     TestMyQuickSort();
-    Buffer buffer = WriteInBuffer();
+    Buffer buffer = WriteInBuffer("onegin.txt");
     MyStringViews strings = Create(&buffer);
     printf("\n");
-    for (int i = 0; i < strings.size; ++i) {
-        printf("%s\n", strings.data[i].str);
-    }
     MyQuickSort(strings.data, 0, strings.size - 1, ClassicStringComparator);
     printf("\n\n");
     for (int i = 0; i < strings.size; ++i) {
         printf("%s\n", strings.data[i].str);
     }
+    free(buffer.buffer);
+    free(strings.data);
     return 0;
 }

@@ -6,11 +6,40 @@
 #include "Tests.h"
 #include "StructureCreator.h"
 
-int ClassicStringComparator(char *str1, char *str2) {
+int ClassicStringComparator(const char *str1, const char *str2) {
     return strcmp(str1, str2);
 }
 
-void MyQuickSort(MyStringView *data, size_t low, size_t high,  int (*StringComparator)(char*, char*)) {
+int RhytmedStringComparator(const char *str1, const char* str2) {
+    int number_of_symbols = 6;
+    assert(str1 != NULL && str2 != NULL);
+    int i = strlen(str1) - 1;
+    int j = strlen(str2) - 1;
+    int count = 0;
+    while (str1[i] != *str1 && str2[j] != *str2) {
+        if (isalpha(str1[i]) && isalpha(str2[j])) {
+            ++count;
+            if (str1[i] != str2[j]) {
+                return (unsigned char)str1[i] - (unsigned char)str2[j];
+            }
+            --i;
+            --j;
+        } else {
+            if (!isalpha(str1[i])) {
+                --i;
+            }
+            if (!isalpha(str2[j])) {
+                --j;
+            }
+        }
+        if (count == number_of_symbols) {
+            break;
+        }
+    }
+    return 0;
+}
+
+void MyQuickSort(MyStringView *data, int low, int high,  int (*StringComparator)(const char*, const char*)) {
     if (low < high) {
         char *pivot = data[(low + high) / 2].str;
         int right = high, left = low;

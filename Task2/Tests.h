@@ -9,8 +9,10 @@
 #include "Sorter.h"
 #include "StructureCreator.h"
 
-void TestReadInBuffer();
+void TestWriteInBuffer();
 
 void TestMyQuickSort();
+
+void TestCreate();
 
 #endif //TASK2_TESTS_H

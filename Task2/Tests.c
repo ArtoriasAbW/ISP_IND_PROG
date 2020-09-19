@@ -5,17 +5,16 @@
 #include "Tests.h"
 #include "StructureCreator.h"
 #include "Sorter.h"
-void TestReadInBuffer() {
+void TestWriteInBuffer() {
     int fd = open("text.txt", O_RDWR | O_CREAT);
-    int value = 7;
-    write(fd, &value, sizeof(value));
+    char s[3] = "abc";
+    write(fd, s, sizeof(s));
     close(fd);
-    fd = open("text.txt", O_RDONLY);
-    int buf;
-    read(fd, &buf, sizeof(buf));
-    assert(buf == value);
+    Buffer buffer = WriteInBuffer("text.txt"    );
+    assert(!strcmp(buffer.buffer, s) && buffer.size == strlen(s));
     close(fd);
-    printf("Testing ReadInBuffer done.\n");
+    free(buffer.buffer);
+    printf("Testing WriteInBuffer done.\n");
 }
 
 void TestMyQuickSort() {
@@ -31,4 +30,8 @@ void TestMyQuickSort() {
            && !strcmp(data[3].str, "dd"));
     free(data);
     printf("Testing MyQuickSort done.\n");
+}
+
+void TestCreate() {
+
 }
