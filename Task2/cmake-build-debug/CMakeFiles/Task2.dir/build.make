@@ -54,10 +54,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/124/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/125/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/124/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/125/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -90,59 +90,59 @@ CMakeFiles/Task2.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Task2.dir/main.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/main.c -o CMakeFiles/Task2.dir/main.c.s
 
-CMakeFiles/Task2.dir/TextSorter.c.o: CMakeFiles/Task2.dir/flags.make
-CMakeFiles/Task2.dir/TextSorter.c.o: ../TextSorter.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Task2.dir/TextSorter.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Task2.dir/TextSorter.c.o   -c /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.c
+CMakeFiles/Task2.dir/StructureCreator.c.o: CMakeFiles/Task2.dir/flags.make
+CMakeFiles/Task2.dir/StructureCreator.c.o: ../StructureCreator.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Task2.dir/StructureCreator.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Task2.dir/StructureCreator.c.o   -c /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.c
 
-CMakeFiles/Task2.dir/TextSorter.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Task2.dir/TextSorter.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.c > CMakeFiles/Task2.dir/TextSorter.c.i
+CMakeFiles/Task2.dir/StructureCreator.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Task2.dir/StructureCreator.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.c > CMakeFiles/Task2.dir/StructureCreator.c.i
 
-CMakeFiles/Task2.dir/TextSorter.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Task2.dir/TextSorter.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.c -o CMakeFiles/Task2.dir/TextSorter.c.s
+CMakeFiles/Task2.dir/StructureCreator.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Task2.dir/StructureCreator.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.c -o CMakeFiles/Task2.dir/StructureCreator.c.s
 
-CMakeFiles/Task2.dir/TestTextSorter.c.o: CMakeFiles/Task2.dir/flags.make
-CMakeFiles/Task2.dir/TestTextSorter.c.o: ../TestTextSorter.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Task2.dir/TestTextSorter.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Task2.dir/TestTextSorter.c.o   -c /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.c
+CMakeFiles/Task2.dir/Tests.c.o: CMakeFiles/Task2.dir/flags.make
+CMakeFiles/Task2.dir/Tests.c.o: ../Tests.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Task2.dir/Tests.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Task2.dir/Tests.c.o   -c /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Tests.c
 
-CMakeFiles/Task2.dir/TestTextSorter.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Task2.dir/TestTextSorter.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.c > CMakeFiles/Task2.dir/TestTextSorter.c.i
+CMakeFiles/Task2.dir/Tests.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Task2.dir/Tests.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Tests.c > CMakeFiles/Task2.dir/Tests.c.i
 
-CMakeFiles/Task2.dir/TestTextSorter.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Task2.dir/TestTextSorter.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.c -o CMakeFiles/Task2.dir/TestTextSorter.c.s
+CMakeFiles/Task2.dir/Tests.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Task2.dir/Tests.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Tests.c -o CMakeFiles/Task2.dir/Tests.c.s
 
-CMakeFiles/Task2.dir/MyQuickSort.c.o: CMakeFiles/Task2.dir/flags.make
-CMakeFiles/Task2.dir/MyQuickSort.c.o: ../MyQuickSort.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Task2.dir/MyQuickSort.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Task2.dir/MyQuickSort.c.o   -c /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c
+CMakeFiles/Task2.dir/Sorter.c.o: CMakeFiles/Task2.dir/flags.make
+CMakeFiles/Task2.dir/Sorter.c.o: ../Sorter.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Task2.dir/Sorter.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Task2.dir/Sorter.c.o   -c /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.c
 
-CMakeFiles/Task2.dir/MyQuickSort.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Task2.dir/MyQuickSort.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c > CMakeFiles/Task2.dir/MyQuickSort.c.i
+CMakeFiles/Task2.dir/Sorter.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Task2.dir/Sorter.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.c > CMakeFiles/Task2.dir/Sorter.c.i
 
-CMakeFiles/Task2.dir/MyQuickSort.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Task2.dir/MyQuickSort.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c -o CMakeFiles/Task2.dir/MyQuickSort.c.s
+CMakeFiles/Task2.dir/Sorter.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Task2.dir/Sorter.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.c -o CMakeFiles/Task2.dir/Sorter.c.s
 
 # Object files for target Task2
 Task2_OBJECTS = \
 "CMakeFiles/Task2.dir/main.c.o" \
-"CMakeFiles/Task2.dir/TextSorter.c.o" \
-"CMakeFiles/Task2.dir/TestTextSorter.c.o" \
-"CMakeFiles/Task2.dir/MyQuickSort.c.o"
+"CMakeFiles/Task2.dir/StructureCreator.c.o" \
+"CMakeFiles/Task2.dir/Tests.c.o" \
+"CMakeFiles/Task2.dir/Sorter.c.o"
 
 # External object files for target Task2
 Task2_EXTERNAL_OBJECTS =
 
 Task2: CMakeFiles/Task2.dir/main.c.o
-Task2: CMakeFiles/Task2.dir/TextSorter.c.o
-Task2: CMakeFiles/Task2.dir/TestTextSorter.c.o
-Task2: CMakeFiles/Task2.dir/MyQuickSort.c.o
+Task2: CMakeFiles/Task2.dir/StructureCreator.c.o
+Task2: CMakeFiles/Task2.dir/Tests.c.o
+Task2: CMakeFiles/Task2.dir/Sorter.c.o
 Task2: CMakeFiles/Task2.dir/build.make
 Task2: CMakeFiles/Task2.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Task2"

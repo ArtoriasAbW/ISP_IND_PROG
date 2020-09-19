@@ -76,22 +76,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c">
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.c">
 			<Option target="Task2"/>
 		</Unit>
-		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h">
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.h">
 			<Option target="Task2"/>
 		</Unit>
-		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.c">
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.c">
 			<Option target="Task2"/>
 		</Unit>
-		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h">
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.h">
 			<Option target="Task2"/>
 		</Unit>
-		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.c">
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Tests.c">
 			<Option target="Task2"/>
 		</Unit>
-		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h">
+		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Tests.h">
 			<Option target="Task2"/>
 		</Unit>
 		<Unit filename="/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/main.c">

@@ -59,10 +59,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/124/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/125/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/124/bin/cmake/linux/bin/cmake -E rm -f
+RM = /snap/clion/125/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -79,7 +79,7 @@ CMAKE_BINARY_DIR = /home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/124/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/125/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -90,7 +90,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/124/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/125/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -143,86 +143,86 @@ Task2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/build
 .PHONY : Task2/fast
 
-MyQuickSort.o: MyQuickSort.c.o
+Sorter.o: Sorter.c.o
 
-.PHONY : MyQuickSort.o
-
-# target to build an object file
-MyQuickSort.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/MyQuickSort.c.o
-.PHONY : MyQuickSort.c.o
-
-MyQuickSort.i: MyQuickSort.c.i
-
-.PHONY : MyQuickSort.i
-
-# target to preprocess a source file
-MyQuickSort.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/MyQuickSort.c.i
-.PHONY : MyQuickSort.c.i
-
-MyQuickSort.s: MyQuickSort.c.s
-
-.PHONY : MyQuickSort.s
-
-# target to generate assembly for a file
-MyQuickSort.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/MyQuickSort.c.s
-.PHONY : MyQuickSort.c.s
-
-TestTextSorter.o: TestTextSorter.c.o
-
-.PHONY : TestTextSorter.o
+.PHONY : Sorter.o
 
 # target to build an object file
-TestTextSorter.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/TestTextSorter.c.o
-.PHONY : TestTextSorter.c.o
+Sorter.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/Sorter.c.o
+.PHONY : Sorter.c.o
 
-TestTextSorter.i: TestTextSorter.c.i
+Sorter.i: Sorter.c.i
 
-.PHONY : TestTextSorter.i
+.PHONY : Sorter.i
 
 # target to preprocess a source file
-TestTextSorter.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/TestTextSorter.c.i
-.PHONY : TestTextSorter.c.i
+Sorter.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/Sorter.c.i
+.PHONY : Sorter.c.i
 
-TestTextSorter.s: TestTextSorter.c.s
+Sorter.s: Sorter.c.s
 
-.PHONY : TestTextSorter.s
+.PHONY : Sorter.s
 
 # target to generate assembly for a file
-TestTextSorter.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/TestTextSorter.c.s
-.PHONY : TestTextSorter.c.s
+Sorter.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/Sorter.c.s
+.PHONY : Sorter.c.s
 
-TextSorter.o: TextSorter.c.o
+StructureCreator.o: StructureCreator.c.o
 
-.PHONY : TextSorter.o
+.PHONY : StructureCreator.o
 
 # target to build an object file
-TextSorter.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/TextSorter.c.o
-.PHONY : TextSorter.c.o
+StructureCreator.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/StructureCreator.c.o
+.PHONY : StructureCreator.c.o
 
-TextSorter.i: TextSorter.c.i
+StructureCreator.i: StructureCreator.c.i
 
-.PHONY : TextSorter.i
+.PHONY : StructureCreator.i
 
 # target to preprocess a source file
-TextSorter.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/TextSorter.c.i
-.PHONY : TextSorter.c.i
+StructureCreator.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/StructureCreator.c.i
+.PHONY : StructureCreator.c.i
 
-TextSorter.s: TextSorter.c.s
+StructureCreator.s: StructureCreator.c.s
 
-.PHONY : TextSorter.s
+.PHONY : StructureCreator.s
 
 # target to generate assembly for a file
-TextSorter.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/TextSorter.c.s
-.PHONY : TextSorter.c.s
+StructureCreator.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/StructureCreator.c.s
+.PHONY : StructureCreator.c.s
+
+Tests.o: Tests.c.o
+
+.PHONY : Tests.o
+
+# target to build an object file
+Tests.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/Tests.c.o
+.PHONY : Tests.c.o
+
+Tests.i: Tests.c.i
+
+.PHONY : Tests.i
+
+# target to preprocess a source file
+Tests.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/Tests.c.i
+.PHONY : Tests.c.i
+
+Tests.s: Tests.c.s
+
+.PHONY : Tests.s
+
+# target to generate assembly for a file
+Tests.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Task2.dir/build.make CMakeFiles/Task2.dir/Tests.c.s
+.PHONY : Tests.c.s
 
 main.o: main.c.o
 
@@ -260,15 +260,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Task2"
-	@echo "... MyQuickSort.o"
-	@echo "... MyQuickSort.i"
-	@echo "... MyQuickSort.s"
-	@echo "... TestTextSorter.o"
-	@echo "... TestTextSorter.i"
-	@echo "... TestTextSorter.s"
-	@echo "... TextSorter.o"
-	@echo "... TextSorter.i"
-	@echo "... TextSorter.s"
+	@echo "... Sorter.o"
+	@echo "... Sorter.i"
+	@echo "... Sorter.s"
+	@echo "... StructureCreator.o"
+	@echo "... StructureCreator.i"
+	@echo "... StructureCreator.s"
+	@echo "... Tests.o"
+	@echo "... Tests.i"
+	@echo "... Tests.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

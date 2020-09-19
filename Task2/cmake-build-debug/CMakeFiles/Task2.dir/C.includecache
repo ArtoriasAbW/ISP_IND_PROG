@@ -6,29 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.c
-MyQuickSort.h
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h
-TestTextSorter.h
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
-TextSorter.h
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.c
+Sorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.h
+Tests.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Tests.h
+StructureCreator.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.h
 
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/MyQuickSort.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.h
 stddef.h
 -
 memory.h
 -
-TextSorter.h
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
-TestTextSorter.h
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
+StructureCreator.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.h
 
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TestTextSorter.h
-assert.h
--
-
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/TextSorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.h
 fcntl.h
 -
 stdio.h
@@ -39,4 +33,12 @@ sys/stat.h
 -
 zconf.h
 -
+
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Tests.h
+assert.h
+-
+Sorter.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/Sorter.h
+StructureCreator.h
+/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/StructureCreator.h
 

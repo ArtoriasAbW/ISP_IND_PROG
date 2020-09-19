@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Task2.dir/MyQuickSort.c.o"
-  "CMakeFiles/Task2.dir/TestTextSorter.c.o"
-  "CMakeFiles/Task2.dir/TextSorter.c.o"
+  "CMakeFiles/Task2.dir/Sorter.c.o"
+  "CMakeFiles/Task2.dir/StructureCreator.c.o"
+  "CMakeFiles/Task2.dir/Tests.c.o"
   "CMakeFiles/Task2.dir/main.c.o"
   "Task2"
   "Task2.pdb"

@@ -3,4 +3,4 @@ project(Task2 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Task2 main.c TextSorter.c TextSorter.h TestTextSorter.c TestTextSorter.h MyQuickSort.c MyQuickSort.h)
+add_executable(Task2 main.c StructureCreator.c StructureCreator.h Tests.c Tests.h Sorter.c Sorter.h)

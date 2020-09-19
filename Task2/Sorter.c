@@ -2,19 +2,23 @@
 // Created by pavel on 13.09.2020.
 //
 
-#include "MyQuickSort.h"
-#include "TestTextSorter.h"
-#include "TextSorter.h"
+#include "Sorter.h"
+#include "Tests.h"
+#include "StructureCreator.h"
 
-void MyQuickSort(MyStringView *data, size_t low, size_t high) {
+int ClassicStringComparator(char *str1, char *str2) {
+    return strcmp(str1, str2);
+}
+
+void MyQuickSort(MyStringView *data, size_t low, size_t high,  int (*StringComparator)(char*, char*)) {
     if (low < high) {
-        char *pivot = *data[(low + high) / 2].str;
+        char *pivot = data[(low + high) / 2].str;
         int right = high, left = low;
         do {
-            while (strcmp(*data[left].str, pivot) < 0) {
+            while (StringComparator(data[left].str, pivot) < 0) {
                 ++left;
             }
-            while (strcmp(*data[right].str, pivot) > 0) {
+            while (StringComparator(data[right].str, pivot) > 0) {
                 --right;
             }
             if (left <= right) {
@@ -30,7 +34,7 @@ void MyQuickSort(MyStringView *data, size_t low, size_t high) {
                 free(tmp);
             }
         } while (left <= right);
-        MyQuickSort(data, low, right);
-        MyQuickSort(data, left, high);
+        MyQuickSort(data, low, right, StringComparator);
+        MyQuickSort(data, left, high, StringComparator);
     }
 }
