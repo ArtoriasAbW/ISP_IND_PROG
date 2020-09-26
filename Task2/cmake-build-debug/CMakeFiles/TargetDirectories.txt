@@ -1,3 +1,0 @@
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/pavel/5_sem/ISP_INDUSRIAL_PROG_COURSE/Task2/cmake-build-debug/CMakeFiles/Task2.dir

@@ -1,1 +1,0 @@
-/usr/bin/cc -g   CMakeFiles/Task2.dir/main.c.o CMakeFiles/Task2.dir/StructureCreator.c.o CMakeFiles/Task2.dir/Tests.c.o CMakeFiles/Task2.dir/Sorter.c.o  -o Task2 
