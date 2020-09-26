@@ -1,0 +1,68 @@
+\hypertarget{StructureCreator_8h}{}\doxysection{Structure\+Creator.\+h File Reference}
+\label{StructureCreator_8h}\index{StructureCreator.h@{StructureCreator.h}}
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$zconf.\+h$>$}\newline
+Include dependency graph for Structure\+Creator.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{StructureCreator_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{StructureCreator_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBuffer}{Buffer}}
+\item 
+struct \mbox{\hyperlink{structMyStringView}{My\+String\+View}}
+\item 
+struct \mbox{\hyperlink{structMyStringViews}{My\+String\+Views}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structBuffer}{Buffer}} \mbox{\hyperlink{StructureCreator_8h_ac51228138ca73b3b418cee6346b88b3f}{Write\+In\+Buffer}} (char $\ast$file\+\_\+name)
+\item 
+\mbox{\hyperlink{structMyStringViews}{My\+String\+Views}} \mbox{\hyperlink{StructureCreator_8h_ab2bb38b1e667f72e3bf98958f220046e}{Create}} (\mbox{\hyperlink{structBuffer}{Buffer}} $\ast$data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{StructureCreator_8h_ab2bb38b1e667f72e3bf98958f220046e}\label{StructureCreator_8h_ab2bb38b1e667f72e3bf98958f220046e}} 
+\index{StructureCreator.h@{StructureCreator.h}!Create@{Create}}
+\index{Create@{Create}!StructureCreator.h@{StructureCreator.h}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMyStringViews}{My\+String\+Views}} Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structBuffer}{Buffer}} $\ast$}]{data }\end{DoxyParamCaption})}
+
+Create \mbox{\hyperlink{structMyStringViews}{My\+String\+Views}} structure with data from the data 
+\begin{DoxyParams}{Parameters}
+{\em data} & data to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{structMyStringViews}{My\+String\+Views}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{StructureCreator_8h_ac51228138ca73b3b418cee6346b88b3f}\label{StructureCreator_8h_ac51228138ca73b3b418cee6346b88b3f}} 
+\index{StructureCreator.h@{StructureCreator.h}!WriteInBuffer@{WriteInBuffer}}
+\index{WriteInBuffer@{WriteInBuffer}!StructureCreator.h@{StructureCreator.h}}
+\doxysubsubsection{\texorpdfstring{WriteInBuffer()}{WriteInBuffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structBuffer}{Buffer}} Write\+In\+Buffer (\begin{DoxyParamCaption}\item[{char $\ast$}]{file\+\_\+name }\end{DoxyParamCaption})}
+
+Read from file\+\_\+name and write in \mbox{\hyperlink{structBuffer}{Buffer}} 
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+name} & the name of the file to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+filled \mbox{\hyperlink{structBuffer}{Buffer}} 
+\end{DoxyReturn}

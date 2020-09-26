@@ -1,0 +1,73 @@
+\hypertarget{Sorter_8c}{}\doxysection{Sorter.\+c File Reference}
+\label{Sorter_8c}\index{Sorter.c@{Sorter.c}}
+{\ttfamily \#include \char`\"{}Sorter.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Tests.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Structure\+Creator.\+h\char`\"{}}\newline
+Include dependency graph for Sorter.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Sorter_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{Sorter_8c_aa38f17598b88ad3f7d6e223887a68e40}{Classic\+String\+Comparator}} (const char $\ast$str1, const char $\ast$str2)
+\item 
+int \mbox{\hyperlink{Sorter_8c_a68217ab4f9f2c6ad7c7ede67d96dac5a}{Rhytmed\+String\+Comparator}} (const char $\ast$str1, const char $\ast$str2)
+\item 
+void \mbox{\hyperlink{Sorter_8c_aa2855087270872e543cf72717b4977a3}{My\+Quick\+Sort}} (\mbox{\hyperlink{structMyStringView}{My\+String\+View}} $\ast$data, int low, int high, int($\ast$String\+Comparator)(const char $\ast$, const char $\ast$))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Sorter_8c_aa38f17598b88ad3f7d6e223887a68e40}\label{Sorter_8c_aa38f17598b88ad3f7d6e223887a68e40}} 
+\index{Sorter.c@{Sorter.c}!ClassicStringComparator@{ClassicStringComparator}}
+\index{ClassicStringComparator@{ClassicStringComparator}!Sorter.c@{Sorter.c}}
+\doxysubsubsection{\texorpdfstring{ClassicStringComparator()}{ClassicStringComparator()}}
+{\footnotesize\ttfamily int Classic\+String\+Comparator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str1,  }\item[{const char $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+Compares strings in lexicographic order 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str1} & first string \\
+\hline
+\mbox{\texttt{ in}}  & {\em str2} & second string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if str1 == str2, value is greater than 0 if str1 $>$ str2, else value less than 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{Sorter_8c_aa2855087270872e543cf72717b4977a3}\label{Sorter_8c_aa2855087270872e543cf72717b4977a3}} 
+\index{Sorter.c@{Sorter.c}!MyQuickSort@{MyQuickSort}}
+\index{MyQuickSort@{MyQuickSort}!Sorter.c@{Sorter.c}}
+\doxysubsubsection{\texorpdfstring{MyQuickSort()}{MyQuickSort()}}
+{\footnotesize\ttfamily void My\+Quick\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMyStringView}{My\+String\+View}} $\ast$}]{data,  }\item[{int}]{low,  }\item[{int}]{high,  }\item[{int($\ast$)(const char $\ast$, const char $\ast$)}]{String\+Comparator }\end{DoxyParamCaption})}
+
+Classic Quick\+Sort for \mbox{\hyperlink{structMyStringView}{My\+String\+View}} array with custom comparator 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em data} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em low} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em high} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em String\+Comparator} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{Sorter_8c_a68217ab4f9f2c6ad7c7ede67d96dac5a}\label{Sorter_8c_a68217ab4f9f2c6ad7c7ede67d96dac5a}} 
+\index{Sorter.c@{Sorter.c}!RhytmedStringComparator@{RhytmedStringComparator}}
+\index{RhytmedStringComparator@{RhytmedStringComparator}!Sorter.c@{Sorter.c}}
+\doxysubsubsection{\texorpdfstring{RhytmedStringComparator()}{RhytmedStringComparator()}}
+{\footnotesize\ttfamily int Rhytmed\+String\+Comparator (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str1,  }\item[{const char $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+Compares strings in rhymed order(for details implementation) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em str1} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em str2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if str1 == str2, value is greater than 0 if str1 $>$ str2, else value less than 0 
+\end{DoxyReturn}
