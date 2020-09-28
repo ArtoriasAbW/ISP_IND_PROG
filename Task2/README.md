@@ -20,7 +20,6 @@ git clone https://github.com/ArtoriasAbW/ISP_IND_PROG.git
 
 ```
 cd ISP_IND_PROG/Task2
-
 ```
 
 * Release mode
