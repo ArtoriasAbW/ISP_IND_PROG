@@ -32,5 +32,15 @@ void TestMyQuickSort() {
 }
 
 void TestCreate() {
-
+  char str[30] = "Hello world\nfoo\nC++\nRussia\n";
+  Buffer buffer;
+  buffer.buffer = str;
+  buffer.size = strlen(str);
+  MyStringViews strings = Create(&buffer);
+  assert(!strcmp(strings.data[0].str, "Hello world") && !strcmp(strings.data[1].str, "foo"));
+  assert(!strcmp(strings.data[2].str, "C++") && !strcmp(strings.data[3].str, "Russia"));
+  free(strings.data);
+  printf("Testing Create done.\n");
 }
+
+

@@ -5,5 +5,6 @@
 int main(void) {
     TestWriteInBuffer();
     TestMyQuickSort();
+    TestCreate();
     return 0;
 }
