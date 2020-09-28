@@ -29,7 +29,7 @@ MyStringViews Create(Buffer *buffer) {
     int capacity = 20;
     MyStringView *lines = calloc(capacity, sizeof(*lines));
     int cur_size = 0;
-    for (int i = 0; i < buffer->size;) {
+    for (size_t i = 0; i < buffer->size;) {
         lines[cur_size].str = &buffer->buffer[i];
         lines[cur_size].len = 0;
         while (buffer->buffer[i] != '\n') {
