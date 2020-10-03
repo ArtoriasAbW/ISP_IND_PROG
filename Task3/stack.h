@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-#define TYPE int
+// move constuctor may be added and doxygen??
 
 typedef struct Stack {
     ssize_t size;

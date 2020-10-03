@@ -1,18 +1,33 @@
+#define TYPE int
 #include "stack.h"
 
-int main() {
+void TestPushPopInt() {
     Stack stack;
-    StackConstructor(&stack, 20);
+    ssize_t capacity = 20;
+    StackConstructor(&stack, capacity);
+    assert(stack.size == 0 && stack.capacity == capacity && stack.data != NULL);
     for (int i = 0; i < 30; ++i) {
         Push(&stack, i);
     }
-    Stack stack_two = StackCopyConstructor(&stack);
-    printf("capacity = %ld size = %ld\n", stack_two.capacity, stack_two.size);
-    for (int i = 0; i < 30; ++i) {
-        printf("%d ", *Pop(&stack));
+    assert(stack.size == 30 && stack.capacity == 40 && stack.data != NULL);
+    for (int i = 29; i >= 0; --i) {
+        assert(*Pop(&stack) == i);
     }
-    printf("\n");
-    StackDestructor(&stack_two);
-    StackDestructor(&stack);
+    printf("Test PushPopInt done.\n");
+}
 
+
+void TestStackDestructor() {
+
+}
+
+
+void TestCopyConstructor() {
+    
+}
+#undef TYPE
+
+
+int main() {
+    TestPushPopInt();
 }
