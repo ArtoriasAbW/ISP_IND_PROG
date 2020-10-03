@@ -17,10 +17,9 @@ void TestWriteInBuffer() {
 }
 
 void TestMyQuickSort() {
-    size_t size = 4;
     char* s[4] = {"dd", "cc", "aa", "bb"};
-    MyStringView *data = calloc(size, sizeof(*data));
-    for (size_t i = 0; i < size; ++i) {
+    MyStringView *data = calloc(4, sizeof(*data));
+    for (size_t i = 0; i < 4; ++i) {
         data[i].str = s[i];
         data[i].len = 2;
     }
@@ -28,7 +27,18 @@ void TestMyQuickSort() {
     assert(!strcmp(data[0].str, "aa") && !strcmp(data[1].str, "bb") && !strcmp(data[2].str, "cc")
            && !strcmp(data[3].str, "dd"));
     free(data);
+    char *pol_s[2] = {"azza", "abba"};
+    data = calloc(2, sizeof(*data));
+    for (size_t i = 0; i < 2; ++i) {
+        data[i].str = pol_s[i];
+        data[i].len = 4;
+    }
+    MyQuickSort(data, 0, 1, ClassicStringComparator);
+    assert(!strcmp(data[0].str, "abba") && !strcmp(data[1].str, "azza"));
+    MyQuickSort(data, 0, 1, RhytmedStringComparator);
+    assert(!strcmp(data[0].str, "abba") && !strcmp(data[1].str, "azza"));
     printf("Testing MyQuickSort done.\n");
+    free(data);
 }
 
 void TestCreate() {

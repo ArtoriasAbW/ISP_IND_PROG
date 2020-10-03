@@ -12,7 +12,7 @@
  * @param [in] str2 second string
  * @return 0 if str1 == str2, value is greater than 0 if str1 > str2, else value less than 0
  */
-int ClassicStringComparator(const char *str1, const char *str2);
+int ClassicStringComparator(const MyStringView str1, const MyStringView str2);
 
 /*!
  * Compares strings in rhymed order(for details implementation)
@@ -20,7 +20,7 @@ int ClassicStringComparator(const char *str1, const char *str2);
  * @param [in] str2
  * @return 0 if str1 == str2, value is greater than 0 if str1 > str2, else value less than 0
  */
-int RhytmedStringComparator(const char *str1, const char* str2);
+int RhytmedStringComparator(const MyStringView str1, const MyStringView str2);
 
 /*!
  * Classic QuickSort for MyStringView array with custom comparator
@@ -29,5 +29,5 @@ int RhytmedStringComparator(const char *str1, const char* str2);
  * @param [in] high
  * @param [in] StringComparator
  */
-void MyQuickSort(MyStringView* data, int low, int high, int (*StringComparator)(const char*, const char*));
+void MyQuickSort(MyStringView* data, int low, int high, int (*StringComparator)(MyStringView, MyStringView));
 #endif //TASK2_SORTER_H

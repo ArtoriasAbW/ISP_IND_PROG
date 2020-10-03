@@ -1,4 +1,4 @@
-# RhymedHamletSorter
+# Rhymed Hamlet Sorter
 
 Helps Shakespeare create an encyclopedia of Danish life.
 

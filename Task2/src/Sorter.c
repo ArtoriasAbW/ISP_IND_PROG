@@ -3,48 +3,47 @@
 #include "Tests.h"
 #include "StructureCreator.h"
 
-int ClassicStringComparator(const char *str1, const char *str2) {
-    return strcmp(str1, str2);
+int ClassicStringComparator(MyStringView str1, MyStringView str2) {
+    return strcmp(str1.str, str2.str);
 }
 
-int RhytmedStringComparator(const char *str1, const char* str2) {
-    int number_of_symbols = 3;
-    assert(str1 != NULL && str2 != NULL);
-    int i = strlen(str1) - 1;
-    int j = strlen(str2) - 1;
+int RhytmedStringComparator(MyStringView str1, MyStringView str2) {
+    assert(str1.str != NULL && str2.str != NULL);
+    int i = str1.len;
+    int j = str2.len;
+    int min_len = i >= j ? i : j;
     int count = 0;
-    while (str1[i] != *str1 && str2[j] != *str2) {
-        if (isalpha(str1[i]) && isalpha(str2[j])) {
+    while (count < min_len) {
+        if (isalpha(str1.str[i]) && isalpha(str2.str[j])) {
             ++count;
-            if (str1[i] != str2[j]) {
-                return (unsigned char)str1[i] - (unsigned char)str2[j];
+            if (str1.str[i] != str2.str[j]) {
+                return (unsigned char)str1.str[i] - (unsigned char)str2.str[j];
             }
             --i;
             --j;
         } else {
-            if (!isalpha(str1[i])) {
+            if (!isalpha(str1.str[i])) {
                 --i;
             }
-            if (!isalpha(str2[j])) {
+            if (!isalpha(str2.str[j])) {
                 --j;
             }
-        }
-        if (count == number_of_symbols) {
-            break;
         }
     }
     return 0;
 }
 
-void MyQuickSort(MyStringView *data, int low, int high,  int (*StringComparator)(const char*, const char*)) {
+void MyQuickSort(MyStringView *data, int low, int high,  int (*StringComparator)(MyStringView, MyStringView)) {
     if (low < high) {
-        char *pivot = data[(low + high) / 2].str;
+        MyStringView pivot_view;
+        pivot_view.str = data[(low + high) / 2].str;
+        pivot_view.len = strlen(pivot_view.str);
         int right = high, left = low;
         do {
-            while (StringComparator(data[left].str, pivot) < 0) {
+            while (StringComparator(data[left], pivot_view) < 0) {
                 ++left;
             }
-            while (StringComparator(data[right].str, pivot) > 0) {
+            while (StringComparator(data[right], pivot_view) > 0) {
                 --right;
             }
             if (left <= right) {
