@@ -4,6 +4,7 @@
 #include "StructureCreator.h"
 
 int ClassicStringComparator(MyStringView str1, MyStringView str2) {
+    assert(str1.str != NULL && str2.str != NULL);
     return strcmp(str1.str, str2.str);
 }
 
@@ -11,11 +12,11 @@ int RhytmedStringComparator(MyStringView str1, MyStringView str2) {
     assert(str1.str != NULL && str2.str != NULL);
     int i = str1.len;
     int j = str2.len;
-    int min_len = i >= j ? i : j;
+    int min_len = i >= j ? j : i;
     int count = 0;
     while (count < min_len) {
+        ++count;
         if (isalpha(str1.str[i]) && isalpha(str2.str[j])) {
-            ++count;
             if (str1.str[i] != str2.str[j]) {
                 return (unsigned char)str1.str[i] - (unsigned char)str2.str[j];
             }
