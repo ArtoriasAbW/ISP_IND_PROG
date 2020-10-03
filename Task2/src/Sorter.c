@@ -35,6 +35,7 @@ int RhytmedStringComparator(MyStringView str1, MyStringView str2) {
 }
 
 void MyQuickSort(MyStringView *data, int low, int high,  int (*StringComparator)(MyStringView, MyStringView)) {
+    assert(data != NULL);
     if (low < high) {
         MyStringView pivot_view;
         pivot_view.str = data[(low + high) / 2].str;

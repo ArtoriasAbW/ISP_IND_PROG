@@ -3,6 +3,7 @@
 #include "StructureCreator.h"
 
 Buffer WriteInBuffer(char* file_name) {
+    assert(file_name != NULL);
     char* buffer = NULL;
     int f_descriptor = open(file_name, O_RDONLY);
     if (f_descriptor == -1) {
@@ -26,8 +27,13 @@ Buffer WriteInBuffer(char* file_name) {
 }
 
 MyStringViews Create(Buffer *buffer) {
+    assert(buffer != NULL);
     int capacity = 20;
     MyStringView *lines = calloc(capacity, sizeof(*lines));
+    if (lines == NULL) {
+        printf("Cannot allocate memory.\n");
+        exit(1);
+    }
     int cur_size = 0;
     for (size_t i = 0; i < buffer->size;) {
         lines[cur_size].str = &buffer->buffer[i];
