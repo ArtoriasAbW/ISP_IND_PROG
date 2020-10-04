@@ -1,8 +1,0 @@
-#define TYPE int
-#include "stack.h"
-#undef TYPE
-
-
-#define TYPE double
-#include "stack.h"
-#undef TYPE

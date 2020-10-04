@@ -1,33 +1,22 @@
-#include <sys/types.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <stdio.h>
+#ifdef TYPE
 
-// move constuctor may be added and doxygen??
-
-typedef struct Stack {
-    ssize_t size;
-    ssize_t capacity;
-    TYPE *data;
-} Stack;
-
-int CheckStack(Stack *stack) {
+int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
     return stack->data != NULL && stack->size >= 0 && stack->capacity >= stack->size;
 }
 
-void StackConstructor(Stack *stack, ssize_t capacity) {
+void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capacity) {
     stack->data     = (TYPE *)calloc(capacity, sizeof(*stack->data));
     stack->capacity = capacity;
     stack->size     = 0;
-    if (!CheckStack(stack)) {
+    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
         assert(!"Bad stack");
         exit(-1);
     }
 }
 
 
-void StackDestructor(Stack *stack) {
-    if (!CheckStack(stack)) {
+void TEMPLATE(StackDestructor, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
+    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
         assert(!"Bad stack");
         exit(-1);
     }
@@ -37,16 +26,16 @@ void StackDestructor(Stack *stack) {
 }
 
 
-Stack StackCopyConstructor(Stack *old_stack) {
-    if (!CheckStack(old_stack)) {
+TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE) *old_stack) {
+    if (!TEMPLATE(CheckStack, TYPE)(old_stack)) {
         assert(!"Bad stack");
         exit(-1);
     }
-    Stack new_stack;
+    TEMPLATE(Stack,TYPE) new_stack;
     new_stack.capacity = old_stack->capacity;
     new_stack.size = old_stack->size;
     new_stack.data = (TYPE *)calloc(old_stack->capacity, sizeof(*new_stack.data));
-    if (!CheckStack(&new_stack)) {
+    if (!TEMPLATE(CheckStack, TYPE)(&new_stack)) {
         assert(!"Bad stack");
         exit(-1);
     }
@@ -54,8 +43,8 @@ Stack StackCopyConstructor(Stack *old_stack) {
 }
 
 
-void Push(Stack *stack, TYPE value) {
-    if (!CheckStack(stack)) {
+void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
+    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
         assert(!"Bad stack");
         exit(-1);
     }
@@ -73,8 +62,8 @@ void Push(Stack *stack, TYPE value) {
     stack->data[stack->size++] = value;
 }
 
-TYPE* Pop(Stack *stack) {
-    if (!CheckStack(stack)) {
+TYPE* TEMPLATE(Pop, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
+    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
         assert(!"Bad stack");
         exit(-1);
     }
@@ -86,8 +75,8 @@ TYPE* Pop(Stack *stack) {
 }
 
 
-TYPE ShowLast(Stack *stack) {
-    if (!CheckStack(stack)) {
+TYPE TEMPLATE(ShowLast, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
+    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
         assert(!"Bad stack");
         exit(-1);
     }
@@ -97,3 +86,4 @@ TYPE ShowLast(Stack *stack) {
     }
     return stack->data[--stack->size];
 }
+#endif
