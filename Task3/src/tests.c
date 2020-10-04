@@ -12,6 +12,7 @@ void TestPushPopInt() {
     for (int i = 29; i >= 0; --i) {
         assert(*TEMPLATE(Pop, int)(&stack) == i);
     }
+    TEMPLATE(StackDestructor, int)(&stack);
     printf("Test PushPopInt done.\n");
 }
 
@@ -31,6 +32,7 @@ void TestPushPopDouble() {
     assert(*TEMPLATE(Pop, double)(&stack) == 4.323);
     assert(*TEMPLATE(Pop, double)(&stack) == 3.323);
     assert(*TEMPLATE(Pop, double)(&stack) == 2.323);
+    TEMPLATE(StackDestructor, double)(&stack);
     printf("Test PushPopDouble done.\n");
 }
 
