@@ -1,3 +1,5 @@
+/** @file */
+
 #ifdef TYPE
 
 int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
@@ -21,6 +23,7 @@ void TEMPLATE(StackDestructor, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
         exit(-1);
     }
     free(stack->data);
+    stack->data = NULL;
     stack->capacity = -1;
     stack->size     = -1;
 }
@@ -62,19 +65,6 @@ void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
     stack->data[stack->size++] = value;
 }
 
-TYPE* TEMPLATE(Pop, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
-    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
-        assert(!"Bad stack");
-        exit(-1);
-    }
-    if (stack->size < 1) {
-        assert(!"Stack is empty");
-        exit(-1);
-    }
-    return &stack->data[--stack->size];
-}
-
-
 TYPE TEMPLATE(ShowLast, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
     if (!TEMPLATE(CheckStack, TYPE)(stack)) {
         assert(!"Bad stack");
@@ -84,6 +74,13 @@ TYPE TEMPLATE(ShowLast, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
         assert(!"Stack is empty");
         exit(-1);
     }
-    return stack->data[--stack->size];
+    return stack->data[stack->size - 1];
 }
+
+TYPE TEMPLATE(Pop, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
+    TYPE value = TEMPLATE(ShowLast, TYPE)(stack);
+    stack->size--;
+    return value;
+}
+
 #endif

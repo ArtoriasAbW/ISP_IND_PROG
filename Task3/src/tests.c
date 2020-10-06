@@ -1,3 +1,5 @@
+/** @file */
+
 #include "defines.h"
 
 void TestPushPopInt() {
@@ -10,7 +12,7 @@ void TestPushPopInt() {
     }
     assert(stack.size == 30 && stack.capacity == 40 && stack.data != NULL);
     for (int i = 29; i >= 0; --i) {
-        assert(*TEMPLATE(Pop, int)(&stack) == i);
+        assert(TEMPLATE(Pop, int)(&stack) == i);
     }
     TEMPLATE(StackDestructor, int)(&stack);
     printf("Test PushPopInt done.\n");
@@ -27,27 +29,45 @@ void TestPushPopDouble() {
     TEMPLATE(Push, double)(&stack, 5.323);
     TEMPLATE(Push, double)(&stack, 6.777);
     assert(stack.size == capacity && stack.capacity == capacity && stack.data != NULL);
-    assert(*TEMPLATE(Pop, double)(&stack) == 6.777);
-    assert(*TEMPLATE(Pop, double)(&stack) == 5.323);
-    assert(*TEMPLATE(Pop, double)(&stack) == 4.323);
-    assert(*TEMPLATE(Pop, double)(&stack) == 3.323);
-    assert(*TEMPLATE(Pop, double)(&stack) == 2.323);
+    assert(TEMPLATE(Pop, double)(&stack) == 6.777);
+    assert(TEMPLATE(Pop, double)(&stack) == 5.323);
+    assert(TEMPLATE(Pop, double)(&stack) == 4.323);
+    assert(TEMPLATE(Pop, double)(&stack) == 3.323);
+    assert(TEMPLATE(Pop, double)(&stack) == 2.323);
+    assert(stack.size == 0 && stack.capacity == capacity);
     TEMPLATE(StackDestructor, double)(&stack);
     printf("Test PushPopDouble done.\n");
 }
 
 
-void TestStackDestructor() {
+void TestCopyConstructor() {
+    TEMPLATE(Stack, short) stack;
+    ssize_t capacity = 10;
+    TEMPLATE(StackConstructor, short)(&stack, capacity);
+    for (short i = 0; i < capacity * 2; ++i) {
+        TEMPLATE(Push, short)(&stack, i);
+    }
+    TEMPLATE(Stack, short) new_stack = TEMPLATE(StackCopyConstructor, short)(&stack);
+    assert(stack.capacity == new_stack.capacity && stack.size == new_stack.size);
+    TEMPLATE(StackDestructor, short)(&stack);
+    TEMPLATE(StackDestructor, short)(&new_stack);
+    printf("Test CopyConstructor done.\n");
 
 }
 
-
-void TestCopyConstructor() {
-
+void TestDestructor() {
+    TEMPLATE(Stack, char) stack;
+    ssize_t capacity = 10;
+    TEMPLATE(StackConstructor, char)(&stack, capacity);
+    TEMPLATE(StackDestructor, char)(&stack);
+    assert(stack.data == NULL && stack.size == -1 && stack.capacity == -1);
+    printf("Test Destructor done\n");
 }
 
 
 int main() {
     TestPushPopInt();
     TestPushPopDouble();
+    TestCopyConstructor();
+    TestDestructor();
 }
