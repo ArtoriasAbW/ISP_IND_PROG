@@ -8,7 +8,7 @@ Realisation of stack for different types with function that can dump the state o
 
 ### Installing
  
- * Download the project form GitHub or clone repository by
+ * Download the project from GitHub or clone repository by
  
 ```
 git clone https://github.com/ArtoriasAbW/ISP_IND_PROG.git
