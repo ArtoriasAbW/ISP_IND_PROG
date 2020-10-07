@@ -2,12 +2,15 @@
 
 #include "defines.h"
 
+
 void TestPushPopInt() {
     TEMPLATE(Stack, int) stack;
     ssize_t capacity = 20;
     TEMPLATE(StackConstructor, int)(&stack, capacity);
     assert(stack.size == 0 && stack.capacity == capacity && stack.data != NULL);
     for (int i = 0; i < 30; ++i) {
+        if (i == 15) {
+        }
         TEMPLATE(Push, int)(&stack, i);
     }
     assert(stack.size == 30 && stack.capacity == 40 && stack.data != NULL);
@@ -15,7 +18,7 @@ void TestPushPopInt() {
         assert(TEMPLATE(Pop, int)(&stack) == i);
     }
     TEMPLATE(StackDestructor, int)(&stack);
-    printf("Test PushPopInt done.\n");
+    fprintf(stderr, "Test PushPopInt done.\n");
 }
 
 void TestPushPopDouble() {
@@ -36,7 +39,7 @@ void TestPushPopDouble() {
     assert(TEMPLATE(Pop, double)(&stack) == 2.323);
     assert(stack.size == 0 && stack.capacity == capacity);
     TEMPLATE(StackDestructor, double)(&stack);
-    printf("Test PushPopDouble done.\n");
+    fprintf(stderr, "Test PushPopDouble done.\n");
 }
 
 
@@ -51,7 +54,7 @@ void TestCopyConstructor() {
     assert(stack.capacity == new_stack.capacity && stack.size == new_stack.size);
     TEMPLATE(StackDestructor, short)(&stack);
     TEMPLATE(StackDestructor, short)(&new_stack);
-    printf("Test CopyConstructor done.\n");
+    fprintf(stderr, "Test CopyConstructor done.\n");
 
 }
 
@@ -61,7 +64,7 @@ void TestDestructor() {
     TEMPLATE(StackConstructor, char)(&stack, capacity);
     TEMPLATE(StackDestructor, char)(&stack);
     assert(stack.data == NULL && stack.size == -1 && stack.capacity == -1);
-    printf("Test Destructor done\n");
+    fprintf(stderr, "Test Destructor done\n");
 }
 
 
