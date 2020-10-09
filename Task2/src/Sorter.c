@@ -5,7 +5,25 @@
 
 int ClassicStringComparator(MyStringView str1, MyStringView str2) {
     assert(str1.str != NULL && str2.str != NULL);
-    return strcmp(str1.str, str2.str);
+    int i = 0;
+    int j = 0;
+    while (str1.str[i] && str2.str[j]) {
+        if (isalpha(str1.str[i]) && isalpha(str2.str[j])) {
+            if (tolower(str1.str[i]) != tolower(str2.str[j])) {
+                return tolower((unsigned char)str1.str[i]) - tolower((unsigned char)str2.str[j]);
+            }
+            ++i;
+            ++j;
+        } else {
+            if (!isalpha(str1.str[i])) {
+                ++i;
+            }
+            if (!isalpha(str2.str[j])) {
+                ++j;
+            }
+        }
+    }
+    return 0;
 }
 
 int RhytmedStringComparator(MyStringView str1, MyStringView str2) {
@@ -17,8 +35,8 @@ int RhytmedStringComparator(MyStringView str1, MyStringView str2) {
     while (count < min_len) {
         ++count;
         if (isalpha(str1.str[i]) && isalpha(str2.str[j])) {
-            if (str1.str[i] != str2.str[j]) {
-                return (unsigned char)str1.str[i] - (unsigned char)str2.str[j];
+            if (tolower(str1.str[i]) != tolower(str2.str[j])) {
+                return tolower((unsigned char)str1.str[i]) - tolower((unsigned char)str2.str[j]);
             }
             --i;
             --j;
