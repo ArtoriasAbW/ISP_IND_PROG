@@ -3,9 +3,10 @@
 #include <sys/types.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdint.h>
 #include <stdio.h>
 #include "templates.h"
-
+#include "utility.h"
 #ifdef TYPE
 
 
@@ -13,9 +14,11 @@
 * Stack for elements that are of type TYPE 
 */
 typedef struct TEMPLATE(Stack, TYPE) {
+    DATA_PROTECTOR_TYPE top_canary;
     ssize_t size;
     ssize_t capacity;
     TYPE *data;
+    DATA_PROTECTOR_TYPE bottom_canary;
 } TEMPLATE(Stack, TYPE);
 
 

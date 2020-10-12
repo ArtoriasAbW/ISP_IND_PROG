@@ -1,6 +1,9 @@
 /** @file */
 
 #ifdef TYPE
+
+#include "utility.h"
+
 /*!
 * Dumps the state of the stack on stderr
 */
@@ -33,14 +36,36 @@
 
 
 int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
-    return stack->data != NULL && stack->size >= 0 && stack->capacity >= stack->size;
+    if (stack->capacity < 0) {
+        return BAD_CAPACITY;
+    }
+    if (stack->size < 0) {
+        return BAD_SIZE;
+    }
+    if (stack->data == NULL) {
+        return BAD_DATA;
+    }
+    if (stack->top_canary != DATA_PROTECTOR_VALUE) {
+        return BAD_STRUCT_TOP_PROTECTOR;
+    }
+    if (stack->bottom_canary != DATA_PROTECTOR_VALUE) {
+        return BAD_STRUCT_BOTTOM_PROTECTOR;
+    }
+    // TODO: check data canary and hash
+    if (stack->size > stack->capacity) {
+        return SIZE_GREATER_CAPACITY;
+    }
+    return STACK_OK;
+
 }
 
 void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capacity) {
-    stack->data     = (TYPE *)calloc(capacity, sizeof(*stack->data));
-    stack->capacity = capacity;
-    stack->size     = 0;
-    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
+    stack->data          = (TYPE *)calloc(capacity, sizeof(*stack->data));
+    stack->capacity      = capacity;
+    stack->size          = 0;
+    stack->top_canary    = DATA_PROTECTOR_VALUE;
+    stack->bottom_canary = DATA_PROTECTOR_VALUE;
+    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
         STACKDUMP(tmp, TYPE, 0);
         assert(!"Bad stack");
@@ -50,21 +75,21 @@ void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capa
 
 
 void TEMPLATE(StackDestructor, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
-    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
+    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
         STACKDUMP(tmp, TYPE, 0);
         assert(!"Bad stack");
         exit(-1);
     }
     free(stack->data);
-    stack->data = NULL;
+    stack->data     = NULL;
     stack->capacity = -1;
     stack->size     = -1;
 }
 
 
 TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE) *old_stack) {
-    if (!TEMPLATE(CheckStack, TYPE)(old_stack)) {
+    if (TEMPLATE(CheckStack, TYPE)(old_stack) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *old_stack;
         STACKDUMP(tmp, TYPE, 0);
         assert(!"Bad stack");
@@ -72,9 +97,11 @@ TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE)
     }
     TEMPLATE(Stack,TYPE) new_stack;
     new_stack.capacity = old_stack->capacity;
-    new_stack.size = old_stack->size;
-    new_stack.data = (TYPE *)calloc(old_stack->capacity, sizeof(*new_stack.data));
-    if (!TEMPLATE(CheckStack, TYPE)(&new_stack)) {
+    new_stack.size     = old_stack->size;
+    new_stack.data     = (TYPE *)calloc(old_stack->capacity, sizeof(*new_stack.data));
+    new_stack.top_canary = old_stack->top_canary;
+    new_stack.bottom_canary = old_stack->bottom_canary;
+    if (TEMPLATE(CheckStack, TYPE)(&new_stack) != STACK_OK) {
         STACKDUMP(new_stack, TYPE, 0);
         assert(!"Bad stack");
         exit(-1);
@@ -84,7 +111,7 @@ TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE)
 
 
 void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
-    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
+    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
         STACKDUMP(tmp, TYPE, 0);
         assert(!"Bad stack");
@@ -105,7 +132,7 @@ void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
 }
 
 TYPE TEMPLATE(ShowLast, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
-    if (!TEMPLATE(CheckStack, TYPE)(stack)) {
+    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
         STACKDUMP(tmp, TYPE, 0);
         assert(!"Bad stack");

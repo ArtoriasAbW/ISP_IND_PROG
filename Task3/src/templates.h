@@ -6,8 +6,6 @@
 #define CAT(X,Y) X##_##Y
 #define TEMPLATE(X,Y) CAT(X,Y)
 
-#endif 
-
 
 #define PRINT(TYPE) PrintValue_##TYPE 
 
@@ -17,3 +15,5 @@ void PrintValue_char(char value);
 void PrintValue_short(short value);
 
 void PrintValue_double(double value);
+
+#endif 
