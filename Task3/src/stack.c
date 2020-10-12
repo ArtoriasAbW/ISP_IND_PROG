@@ -51,23 +51,35 @@ int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
     if (stack->bottom_canary != DATA_PROTECTOR_VALUE) {
         return BAD_STRUCT_BOTTOM_PROTECTOR;
     }
-    // TODO: check data canary and hash
     if (stack->size > stack->capacity) {
         return SIZE_GREATER_CAPACITY;
     }
+    if (*((DATA_PROTECTOR_TYPE *)stack->data - 1) != DATA_PROTECTOR_VALUE) {
+        return BAD_DATA_TOP_PROTECTOR;
+    }
+    if (*(DATA_PROTECTOR_TYPE *)(stack->data + stack->capacity) != DATA_PROTECTOR_VALUE) {
+        return BAD_DATA_BOTTOM_PROTECTOR;
+    }
+     // TODO: check hash
     return STACK_OK;
 
 }
 
 void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capacity) {
-    stack->data          = (TYPE *)calloc(capacity, sizeof(*stack->data));
-    stack->capacity      = capacity;
-    stack->size          = 0;
-    stack->top_canary    = DATA_PROTECTOR_VALUE;
-    stack->bottom_canary = DATA_PROTECTOR_VALUE;
+    void *data                         = calloc(capacity * sizeof(TYPE) + 2 * sizeof(DATA_PROTECTOR_TYPE), sizeof(uint8_t)); 
+    DATA_PROTECTOR_TYPE *top_canary    = (DATA_PROTECTOR_TYPE *)data;
+    DATA_PROTECTOR_TYPE *bottom_canary = (DATA_PROTECTOR_TYPE *)((uint8_t *)data + sizeof(DATA_PROTECTOR_TYPE) + capacity * sizeof(TYPE));
+    *top_canary                        = DATA_PROTECTOR_VALUE;
+    *bottom_canary                     = DATA_PROTECTOR_VALUE;
+    stack->data                        = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
+    stack->capacity                    = capacity;
+    stack->size                        = 0;
+    stack->top_canary                  = DATA_PROTECTOR_VALUE;
+    stack->bottom_canary               = DATA_PROTECTOR_VALUE;
     if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
         STACKDUMP(tmp, TYPE, 0);
+
         assert(!"Bad stack");
         exit(-1);
     }
@@ -81,7 +93,7 @@ void TEMPLATE(StackDestructor, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
         assert(!"Bad stack");
         exit(-1);
     }
-    free(stack->data);
+    free((DATA_PROTECTOR_TYPE *)stack->data - 1);
     stack->data     = NULL;
     stack->capacity = -1;
     stack->size     = -1;
@@ -96,11 +108,16 @@ TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE)
         exit(-1);
     }
     TEMPLATE(Stack,TYPE) new_stack;
-    new_stack.capacity = old_stack->capacity;
-    new_stack.size     = old_stack->size;
-    new_stack.data     = (TYPE *)calloc(old_stack->capacity, sizeof(*new_stack.data));
-    new_stack.top_canary = old_stack->top_canary;
-    new_stack.bottom_canary = old_stack->bottom_canary;
+    void *data                         = calloc(old_stack->capacity * sizeof(TYPE) + 2 * sizeof(DATA_PROTECTOR_TYPE), sizeof(uint8_t)); 
+    DATA_PROTECTOR_TYPE *top_canary    = (DATA_PROTECTOR_TYPE *)data;
+    DATA_PROTECTOR_TYPE *bottom_canary = (DATA_PROTECTOR_TYPE *)((uint8_t *)data + sizeof(DATA_PROTECTOR_TYPE) + old_stack->capacity * sizeof(TYPE));
+    *top_canary                        = DATA_PROTECTOR_VALUE;
+    *bottom_canary                     = DATA_PROTECTOR_VALUE;
+    new_stack.capacity                 = old_stack->capacity;
+    new_stack.size                     = old_stack->size;
+    new_stack.data                     = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
+    new_stack.top_canary               = old_stack->top_canary;
+    new_stack.bottom_canary            = old_stack->bottom_canary;
     if (TEMPLATE(CheckStack, TYPE)(&new_stack) != STACK_OK) {
         STACKDUMP(new_stack, TYPE, 0);
         assert(!"Bad stack");
@@ -119,13 +136,17 @@ void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
     }
     if (stack->size == stack->capacity) {
         stack->capacity *= 2;
-        TYPE *new_data = (TYPE *)realloc(stack->data, stack->capacity * sizeof(*stack->data));
-        if (!new_data) {
+        void *data = realloc((DATA_PROTECTOR_TYPE *)stack->data - 1, stack->capacity * sizeof(TYPE) + 2 * sizeof(DATA_PROTECTOR_TYPE));
+        if (!data) {
             printf("Cannot realloc new space for stack\n");
             assert(!"Reallocation error");
             exit(-1);
         } else {
-            stack->data = new_data;
+            DATA_PROTECTOR_TYPE *top_canary    = (DATA_PROTECTOR_TYPE *)data;
+            DATA_PROTECTOR_TYPE *bottom_canary = (DATA_PROTECTOR_TYPE *)((uint8_t *)data + sizeof(DATA_PROTECTOR_TYPE) + stack->capacity * sizeof(TYPE));
+            *top_canary                        = DATA_PROTECTOR_VALUE;
+            *bottom_canary                     = DATA_PROTECTOR_VALUE;
+            stack->data = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
         }
     }
     stack->data[stack->size++] = value;

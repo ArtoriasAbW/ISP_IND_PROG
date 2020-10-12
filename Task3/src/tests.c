@@ -47,11 +47,13 @@ void TestCopyConstructor() {
     TEMPLATE(Stack, short) stack;
     ssize_t capacity = 10;
     TEMPLATE(StackConstructor, short)(&stack, capacity);
-    for (short i = 0; i < capacity * 2; ++i) {
+    for (short i = 0; i < 2 * capacity; ++i) {
         TEMPLATE(Push, short)(&stack, i);
     }
     TEMPLATE(Stack, short) new_stack = TEMPLATE(StackCopyConstructor, short)(&stack);
     assert(stack.capacity == new_stack.capacity && stack.size == new_stack.size);
+
+    printf("%lx", *(DATA_PROTECTOR_TYPE *)(new_stack.data - 1));
     TEMPLATE(StackDestructor, short)(&stack);
     TEMPLATE(StackDestructor, short)(&new_stack);
     fprintf(stderr, "Test CopyConstructor done.\n");

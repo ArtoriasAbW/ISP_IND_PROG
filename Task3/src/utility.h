@@ -28,6 +28,6 @@ typedef uint32_t HASH_TYPE;
 extern const DATA_PROTECTOR_TYPE DATA_PROTECTOR_VALUE;
 
 
-HASH_TYPE crc(void *data, int bytes_num);
+// HASH_TYPE crc(void *data, int bytes_num);
 
 #endif
