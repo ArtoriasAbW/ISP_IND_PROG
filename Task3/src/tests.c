@@ -9,8 +9,6 @@ void TestPushPopInt() {
     TEMPLATE(StackConstructor, int)(&stack, capacity);
     assert(stack.size == 0 && stack.capacity == capacity && stack.data != NULL);
     for (int i = 0; i < 30; ++i) {
-        if (i == 15) {
-        }
         TEMPLATE(Push, int)(&stack, i);
     }
     assert(stack.size == 30 && stack.capacity == 40 && stack.data != NULL);

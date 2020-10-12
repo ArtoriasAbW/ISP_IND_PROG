@@ -7,34 +7,8 @@
 /*!
 * Dumps the state of the stack on stderr
 */
-#define STACKDUMP(stack, TYPE, ok_flag) \
-{\
-    fprintf(stderr, "stack dump [TYPE = %s]", #TYPE);\
-    if (!ok_flag) {\
-        fprintf(stderr, "(not ok)");\
-        if (stack.data != NULL) {\
-            fprintf(stderr, "[%p]", stack.data);\
-        }\
-    } else {\
-        fprintf(stderr, "(ok)[%p]", stack.data);\
-    }\
-    fprintf(stderr, "[%s:%d in func %s] {\n", __FILE__, __LINE__, __func__);\
-    fprintf(stderr, "    size = %ld\n    capacity = %ld\n", stack.size, stack.capacity);\
-    if (stack.data != NULL) {\
-        fprintf(stderr, "    data[%p] {\n", stack.data);\
-        for (ssize_t i = 0; i < stack.size; ++i) {\
-            fprintf(stderr, "        *[%ld] = ", i);\
-            if (stack.data + i != NULL) {\
-                PRINT(TYPE)(stack.data[i]); \
-            } else {\
-                fprintf(stderr, "ERROR\n");\
-            }\
-        }\
-        fprintf(stderr, "    }\n}\n");\
-    }\
-}
 
-
+// MAYBE NEED SOME MODIFICATION
 int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
     if (stack->capacity < 0) {
         return BAD_CAPACITY;
@@ -146,7 +120,7 @@ void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
             DATA_PROTECTOR_TYPE *bottom_canary = (DATA_PROTECTOR_TYPE *)((uint8_t *)data + sizeof(DATA_PROTECTOR_TYPE) + stack->capacity * sizeof(TYPE));
             *top_canary                        = DATA_PROTECTOR_VALUE;
             *bottom_canary                     = DATA_PROTECTOR_VALUE;
-            stack->data = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
+            stack->data                        = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
         }
     }
     stack->data[stack->size++] = value;
