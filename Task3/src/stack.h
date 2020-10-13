@@ -14,11 +14,15 @@
 * Stack for elements that are of type TYPE 
 */
 typedef struct TEMPLATE(Stack, TYPE) {
+#ifdef STACK_CANARY
     DATA_PROTECTOR_TYPE top_canary;
+#endif
     ssize_t size;
     ssize_t capacity;
     TYPE *data;
+#ifdef STACK_CANARY
     DATA_PROTECTOR_TYPE bottom_canary;
+#endif
 } TEMPLATE(Stack, TYPE);
 
 

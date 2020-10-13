@@ -5,6 +5,12 @@
 
 #include <stdint.h>
 
+
+/*!
+* Dumps the state of the stack on stderr
+*/
+
+#ifdef STACK_CHECK
 #define STACKDUMP(stack, TYPE, state) \
 {\
     PRINTTYPE(TYPE)();\
@@ -18,28 +24,8 @@
     }\
     fprintf(stderr, "[%s:%d in func %s] {\n", __FILE__, __LINE__, __func__);\
     fprintf(stderr, "    size = %ld\n    capacity = %ld\n", stack.size, stack.capacity);\
-    if (stack.top_canary == DATA_PROTECTOR_VALUE) {\
-        fprintf(stderr, "    struct_top cannary ok\t");\
-    } else { \
-        fprintf(stderr, "    struct_top cannary corrupted\t");\
-    }\
-    if (stack.bottom_canary == DATA_PROTECTOR_VALUE) {\
-        fprintf(stderr, "struct_bottom cannary ok\n");\
-    } else { \
-        fprintf(stderr, "struct_bottom cannary corrupted\n");\
-    }\
     if (stack.data != NULL) {\
         fprintf(stderr, "    data[%p] {\n", stack.data);\
-        if (*((DATA_PROTECTOR_TYPE *)stack.data - 1) == DATA_PROTECTOR_VALUE) {\
-            fprintf(stderr, "        data_top cannary ok\t");\
-        } else { \
-            fprintf(stderr, "        data_top cannary corrupted\t");\
-        }\
-        if (*(DATA_PROTECTOR_TYPE *)(stack.data + stack.capacity) == DATA_PROTECTOR_VALUE) {\
-            fprintf(stderr, "data_bottom cannary ok\n");\
-        } else { \
-            fprintf(stderr, "data_bottom cannary corrupted\n");\
-        }\
         for (ssize_t i = 0; i < stack.size; ++i) {\
             fprintf(stderr, "        *[%ld] = ", i);\
             if (stack.data + i != NULL) {\
@@ -51,7 +37,7 @@
         fprintf(stderr, "    }\n}\n");\
     }\
 }
-
+#endif
 
 
 #define TYPE int

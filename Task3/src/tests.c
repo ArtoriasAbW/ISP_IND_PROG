@@ -2,7 +2,6 @@
 
 #include "defines.h"
 
-
 void TestPushPopInt() {
     TEMPLATE(Stack, int) stack;
     ssize_t capacity = 20;
