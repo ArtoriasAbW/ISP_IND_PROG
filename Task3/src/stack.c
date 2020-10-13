@@ -40,6 +40,7 @@ int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
 }
 
 void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capacity) {
+    int state;
     void *data                         = calloc(capacity * sizeof(TYPE) + 2 * sizeof(DATA_PROTECTOR_TYPE), sizeof(uint8_t)); 
     DATA_PROTECTOR_TYPE *top_canary    = (DATA_PROTECTOR_TYPE *)data;
     DATA_PROTECTOR_TYPE *bottom_canary = (DATA_PROTECTOR_TYPE *)((uint8_t *)data + sizeof(DATA_PROTECTOR_TYPE) + capacity * sizeof(TYPE));
@@ -50,9 +51,9 @@ void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capa
     stack->size                        = 0;
     stack->top_canary                  = DATA_PROTECTOR_VALUE;
     stack->bottom_canary               = DATA_PROTECTOR_VALUE;
-    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
+    if ((state = TEMPLATE(CheckStack, TYPE)(stack)) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
-        STACKDUMP(tmp, TYPE, 0);
+        STACKDUMP(tmp, TYPE, state);
 
         assert(!"Bad stack");
         exit(-1);
@@ -61,9 +62,10 @@ void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capa
 
 
 void TEMPLATE(StackDestructor, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
-    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
+    int state;
+    if ((state = TEMPLATE(CheckStack, TYPE)(stack)) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
-        STACKDUMP(tmp, TYPE, 0);
+        STACKDUMP(tmp, TYPE, state);
         assert(!"Bad stack");
         exit(-1);
     }
@@ -75,9 +77,10 @@ void TEMPLATE(StackDestructor, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
 
 
 TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE) *old_stack) {
-    if (TEMPLATE(CheckStack, TYPE)(old_stack) != STACK_OK) {
+    int state;
+    if ((state = TEMPLATE(CheckStack, TYPE)(old_stack)) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *old_stack;
-        STACKDUMP(tmp, TYPE, 0);
+        STACKDUMP(tmp, TYPE, state);
         assert(!"Bad stack");
         exit(-1);
     }
@@ -92,8 +95,8 @@ TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE)
     new_stack.data                     = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
     new_stack.top_canary               = old_stack->top_canary;
     new_stack.bottom_canary            = old_stack->bottom_canary;
-    if (TEMPLATE(CheckStack, TYPE)(&new_stack) != STACK_OK) {
-        STACKDUMP(new_stack, TYPE, 0);
+    if ((state = TEMPLATE(CheckStack, TYPE)(&new_stack)) != STACK_OK) {
+        STACKDUMP(new_stack, TYPE, state);
         assert(!"Bad stack");
         exit(-1);
     }
@@ -102,9 +105,10 @@ TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE)
 
 
 void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
-    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
+    int state;
+    if ((state = TEMPLATE(CheckStack, TYPE)(stack)) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
-        STACKDUMP(tmp, TYPE, 0);
+        STACKDUMP(tmp, TYPE, state);
         assert(!"Bad stack");
         exit(-1);
     }
@@ -127,9 +131,10 @@ void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
 }
 
 TYPE TEMPLATE(ShowLast, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
-    if (TEMPLATE(CheckStack, TYPE)(stack) != STACK_OK) {
+    int state;
+    if ((state = TEMPLATE(CheckStack, TYPE)(stack)) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
-        STACKDUMP(tmp, TYPE, 0);
+        STACKDUMP(tmp, TYPE, state);
         assert(!"Bad stack");
         exit(-1);
     }

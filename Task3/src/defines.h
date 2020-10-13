@@ -3,11 +3,13 @@
 #ifndef DEFINES_H   
 #define DEFINES_H 
 
-#define STACKDUMP(stack, TYPE, ok_flag) \
+#include <stdint.h>
+
+#define STACKDUMP(stack, TYPE, state) \
 {\
-    fprintf(stderr, "stack dump [TYPE = %s]", #TYPE);\
-    if (!ok_flag) {\
-        fprintf(stderr, "(not ok)");\
+    PRINTTYPE(TYPE)();\
+    if (state != STACK_OK) {\
+        fprintf(stderr, "(not ok) ERROR:%s", state_table[state]);\
         if (stack.data != NULL) {\
             fprintf(stderr, "[%p]", stack.data);\
         }\
@@ -66,4 +68,20 @@
 
 #define TYPE char
 #include "stack.h"
+#undef TYPE
+
+#define TYPE uint64_t
+#include "stack.h"
+#undef TYPE
+
+
+#define TYPE int64_t
+#include "stack.h"
+#undef TYPE
+
+
+#define TYPE uint32_t
+#include "stack.h"
+#undef TYPE
+
 #endif

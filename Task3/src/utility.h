@@ -5,6 +5,8 @@
 #include<stdint.h>
 
 
+extern const char *state_table[];
+
 enum STACK_STATE 
 {
     STACK_OK,
