@@ -2,7 +2,7 @@
 
 ## Description
 
-Realisation of stack for different types with function that can dump the state of the stack on stderr
+Realisation of stack for different types with with 4 levels of protection
 
 ## Getting Started
 
@@ -20,16 +20,30 @@ git clone https://github.com/ArtoriasAbW/ISP_IND_PROG.git
 cd ISP_IND_PROG/Task3
 ```
 
-* Release mode
-
-Coming soon
-
-* Debug mode
-
+* Light protection mode
 ```
-make debug
+make light
+./UnkillableStackLight
+```
 
-./UnkillableStackDebug
+
+* Medium protection mode (asserts, code of error, stack dump)
+```
+make medium
+./UnkillableStackMedium
+```
+
+
+* Hard protection mode (canaries for data and struct, asserts, code of error, stack dump)
+```
+make hard
+./UnkillableStackHard
+```
+
+* Insane protection mode(check sum for data and struct, canaries for data and struct, asserts, code of error, stack dump)
+```
+make insane
+./UnkillableStackInsane 
 ```
 
 * Deleting exectuble file
