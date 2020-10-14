@@ -8,8 +8,14 @@ HEADERFILES = src/stack.h src/templates.h src/defines.h src/utility.h
 light: $(FILES) $(HEADERFILES)
 	gcc $(CFLAGS) -O2 -DNDEBUG -o UnkillableStackLight $(FILES)
 
+medium: $(FILES) $(HEADERFILES)
+	gcc $(CFLAGS) -O2 -DSTACK_CHECK -o UnkillableStackMedium $(FILES)
+
 hard: $(FILES) $(HEADERFILES)
-	gcc $(CFLAGS) -O0 $(DEBUG_FLAGS) -g -o UnkillableStackHard $(FILES)
+	gcc $(CFLAGS) -O2 -DSTACK_CHECK -DSTACK_CANARY -o UnkillableStackHard $(FILES)
+
+insane: $(FILES) $(HEADERFILES)
+	gcc $(CFLAGS) -O0 -DSTACK_CANARY -DSTACK_CHECK -DSTACK_HASH -g -o UnkillableStackInsane $(FILES)
 
 clean: 
-	rm UnkillableStackLight UnkillableStackHard
+	rm UnkillableStackLight UnkillableStackMedium UnkillableStackHard UnkillableStackInsane

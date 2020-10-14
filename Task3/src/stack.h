@@ -17,6 +17,10 @@ typedef struct TEMPLATE(Stack, TYPE) {
 #ifdef STACK_CANARY
     DATA_PROTECTOR_TYPE top_canary;
 #endif
+#ifdef STACK_HASH
+    HASH_TYPE struct_hash;
+    HASH_TYPE data_hash;
+#endif
     ssize_t size;
     ssize_t capacity;
     TYPE *data;

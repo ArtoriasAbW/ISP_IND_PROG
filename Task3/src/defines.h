@@ -5,7 +5,6 @@
 
 #include <stdint.h>
 
-
 /*!
 * Dumps the state of the stack on stderr
 */

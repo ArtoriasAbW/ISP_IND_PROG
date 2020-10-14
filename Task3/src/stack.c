@@ -30,9 +30,18 @@ int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
     }
     if (*(DATA_PROTECTOR_TYPE *)(stack->data + stack->capacity) != DATA_PROTECTOR_VALUE) {
         return BAD_DATA_BOTTOM_PROTECTOR;
+    
+    }
+#ifdef STACK_HASH
+    if (stack->struct_hash != crc((uint8_t *)stack + 2 * sizeof(stack->struct_hash) + sizeof(stack->top_canary), 
+                             sizeof(stack->data) + sizeof(stack->size) + sizeof(stack->capacity))) {
+        return WRONG_STRUCT_HASH;
+    }
+    if (stack->data_hash != crc((uint8_t *)stack->data, stack->size * sizeof(*stack->data))) {
+        return WRONG_DATA_HASH;
     }
 #endif
-     // TODO: check hash
+#endif
     return STACK_OK;
 
 }
@@ -40,8 +49,9 @@ int TEMPLATE(CheckStack, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
 #endif
 
 void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capacity) {
+    stack->capacity = capacity;
+    stack->size     = 0; 
 #ifdef STACK_CANARY
-    int state;
     void *data                         = calloc(capacity * sizeof(TYPE) + 2 * sizeof(DATA_PROTECTOR_TYPE), sizeof(uint8_t)); 
     DATA_PROTECTOR_TYPE *top_canary    = (DATA_PROTECTOR_TYPE *)data;
     DATA_PROTECTOR_TYPE *bottom_canary = (DATA_PROTECTOR_TYPE *)((uint8_t *)data + sizeof(DATA_PROTECTOR_TYPE) + capacity * sizeof(TYPE));
@@ -50,12 +60,17 @@ void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capa
     stack->data                        = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
     stack->top_canary                  = DATA_PROTECTOR_VALUE;
     stack->bottom_canary               = DATA_PROTECTOR_VALUE;
+#ifdef STACK_HASH
+    stack->struct_hash = crc((uint8_t *)stack + 2 * sizeof(stack->struct_hash) + sizeof(stack->top_canary), 
+                             sizeof(stack->data) + sizeof(stack->size) + sizeof(stack->capacity));
+    stack->data_hash = crc((uint8_t *)stack->data, stack->size * sizeof(*stack->data));
+
+#endif   
 #else
     stack->data = (TYPE *)calloc(capacity, sizeof(TYPE));
-#endif
-    stack->capacity                    = capacity;
-    stack->size                        = 0;
+#endif                 
 #ifdef STACK_CHECK
+    int state;   
     if ((state = TEMPLATE(CheckStack, TYPE)(stack)) != STACK_OK) {
         TEMPLATE(Stack, TYPE) tmp = *stack;
         STACKDUMP(tmp, TYPE, state);
@@ -98,6 +113,8 @@ TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE)
     }
 #endif
     TEMPLATE(Stack,TYPE) new_stack;
+    new_stack.capacity                 = old_stack->capacity;
+    new_stack.size                     = old_stack->size;
 #ifdef STACK_CANARY
     void *data                         = calloc(old_stack->capacity * sizeof(TYPE) + 2 * sizeof(DATA_PROTECTOR_TYPE), sizeof(uint8_t)); 
     DATA_PROTECTOR_TYPE *top_canary    = (DATA_PROTECTOR_TYPE *)data;
@@ -107,11 +124,14 @@ TEMPLATE(Stack, TYPE) TEMPLATE(StackCopyConstructor, TYPE)(TEMPLATE(Stack, TYPE)
     new_stack.data                     = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
     new_stack.top_canary               = old_stack->top_canary;
     new_stack.bottom_canary            = old_stack->bottom_canary;
+#ifdef STACK_HASH
+    new_stack.struct_hash = crc((uint8_t *)&new_stack + sizeof(new_stack.top_canary) + 2 * sizeof(new_stack.struct_hash),
+                                sizeof(new_stack.data) + sizeof(new_stack.size) + sizeof(new_stack.capacity));
+    new_stack.data_hash   = crc((uint8_t *)new_stack.data, sizeof(*(new_stack.data)) * new_stack.size);
+#endif
 #else
     new_stack.data                     = (TYPE *)calloc(old_stack->capacity, sizeof(TYPE));
 #endif
-    new_stack.capacity                 = old_stack->capacity;
-    new_stack.size                     = old_stack->size;
 #ifdef STACK_CHECK
     if ((state = TEMPLATE(CheckStack, TYPE)(&new_stack)) != STACK_OK) {
         STACKDUMP(new_stack, TYPE, state);
@@ -157,6 +177,11 @@ void TEMPLATE(Push, TYPE)(TEMPLATE(Stack, TYPE) *stack, TYPE value) {
         }
     }
     stack->data[stack->size++] = value;
+#ifdef STACK_HASH
+    stack->struct_hash = crc((uint8_t *)stack + 2 * sizeof(stack->struct_hash) + sizeof(stack->top_canary), 
+                             sizeof(stack->data) + sizeof(stack->size) + sizeof(stack->capacity));
+    stack->data_hash = crc((uint8_t *)stack->data, stack->size * sizeof(*stack->data));
+#endif
 }
 
 TYPE TEMPLATE(ShowLast, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
@@ -180,6 +205,11 @@ TYPE TEMPLATE(ShowLast, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
 TYPE TEMPLATE(Pop, TYPE)(TEMPLATE(Stack, TYPE) *stack) {
     TYPE value = TEMPLATE(ShowLast, TYPE)(stack);
     stack->size--;
+#ifdef STACK_HASH
+    stack->struct_hash = crc((uint8_t *)stack + 2 * sizeof(stack->struct_hash) + sizeof(stack->top_canary), 
+                             sizeof(stack->data) + sizeof(stack->size) + sizeof(stack->capacity));
+    stack->data_hash = crc((uint8_t *)stack->data, stack->size * sizeof(*stack->data));
+#endif
     return value;
 }
 

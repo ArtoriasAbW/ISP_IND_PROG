@@ -18,7 +18,7 @@ enum STACK_STATE
     BAD_DATA_TOP_PROTECTOR,
     BAD_DATA_BOTTOM_PROTECTOR,
     SIZE_GREATER_CAPACITY,
-    WRONG_STACK_HASH,
+    WRONG_STRUCT_HASH,
     WRONG_DATA_HASH
 
 };
@@ -30,6 +30,6 @@ typedef uint32_t HASH_TYPE;
 extern const DATA_PROTECTOR_TYPE DATA_PROTECTOR_VALUE;
 
 
-// HASH_TYPE crc(void *data, int bytes_num);
+HASH_TYPE crc(uint8_t *data, uint32_t bytes_num);
 
 #endif
