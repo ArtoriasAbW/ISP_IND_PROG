@@ -1,0 +1,9 @@
+in
+in
+pop rax
+pop rdx
+push rax
+push 10
+add
+out
+hlt

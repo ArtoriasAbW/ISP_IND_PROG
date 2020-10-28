@@ -257,7 +257,7 @@ void TEMPLATE(StackConstructor, TYPE)(TEMPLATE(Stack, TYPE) *stack, ssize_t capa
     *bottom_canary                     = DATA_PROTECTOR_VALUE;
     stack->data                        = (TYPE *)((DATA_PROTECTOR_TYPE *)data + 1);
     stack->top_canary                  = DATA_PROTECTOR_VALUE;
-    stack->bottom_canary               = DATA_PROTECTOR_VALUE;
+    stack->botdebug tom_canary               = DATA_PROTECTOR_VALUE;
 #ifdef STACK_HASH
     stack->struct_hash = crc((uint8_t *)stack + 2 * sizeof(stack->struct_hash) + sizeof(stack->top_canary), 
                              sizeof(stack->data) + sizeof(stack->size) + sizeof(stack->capacity));
