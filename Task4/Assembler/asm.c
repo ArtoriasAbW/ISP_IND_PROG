@@ -153,8 +153,6 @@ static void assembler_to_file(char *instructions, size_t size, int fd)  { // FIX
         }
         token_begin = token_end;
     }
-    close(fd);
-    munmap(instructions, size);
 }
 
 
@@ -164,5 +162,7 @@ int main(int argc, char **argv) { // file path in argv[1]
         char *instrs = mmap_file(argv[1], &size);
         int fd = open(argv[2], O_RDWR | O_CREAT | O_TRUNC, 0666);
         assembler_to_file(instrs, size, fd);
+        close(fd);
+        munmap(instrs, size);
     }
 }

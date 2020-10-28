@@ -14,15 +14,16 @@ char *mmap_file(char *path, size_t *size) {
         exit(1);
     }
 
-    char *intructions = (char *)mmap(0 , *size, PROT_READ, MAP_SHARED, fd, 0);
-    if (intructions == MAP_FAILED) {
+    char *instructions = (char *)mmap(0 , *size, PROT_READ, MAP_SHARED, fd, 0);
+    if (instructions == MAP_FAILED) {
         fprintf(stderr, "Error :%s\n", strerror(errno));
         exit(1);
     }
     if (close(fd) == -1) {
         fprintf(stderr, "Error :%s\n", strerror(errno));
+        munmap(instructions, *size);
         exit(1);
     }
-    return intructions;
+    return instructions;
     
 }
