@@ -1,3 +1,4 @@
+#pragma once
 #define TYPE double
 #define STACK_CHECK
 
@@ -5,6 +6,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 #include "mmap_file.h"
 
@@ -14,19 +16,29 @@
 
 enum States {
     OFF,
-    ON
+    ON,
+    WAIT
 };
 
 
 typedef struct {
     int state;
     Stack_double *stack;
-    // TODO: regs
+    double rax;
+    double rbx;
+    double rcx;
+    double rdx;
 } CPU;
 
 
-void CPU_init(CPU *cpu) { // * because will be more fields
+void CPU_init(CPU *cpu) {
+    if (cpu->state == OFF) {
+        cpu->stack = (Stack_double *)calloc(1, sizeof(*cpu->stack));
+        StackConstructor_double(cpu->stack, START_CAPACITY);
+        cpu->rax = 0;
+        cpu->rbx = 0;
+        cpu->rcx = 0;
+        cpu->rdx = 0;
+    }
     cpu->state = ON;
-    cpu->stack = (Stack_double *)calloc(1, sizeof(*cpu->stack));
-    StackConstructor_double(cpu->stack, START_CAPACITY);
 }

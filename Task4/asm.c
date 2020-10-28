@@ -1,23 +1,6 @@
-#include "mmap_file.h"
 #include <ctype.h>
-
-enum opcodes {
-    ADD = 1,
-    SUB = 2,
-    MUL = 3,
-    DIV = 4,
-    PUSH_NUM = 5,
-    PUSH_REG = 6,
-    POP = 7,
-    SQRT = 8,
-    IN = 9,
-    OUT = 10,
-    HLT = 11,
-    RAX_REG = 25,
-    RBX_REG = 26,
-    RCX_REG = 27,
-    RDX_REG = 28
-};
+#include "mmap_file.h"
+#include "asm.h"
 
 
 static char parse_reg(char *token_begin, size_t token_size) { // return reg_code or zero if not reg
@@ -112,7 +95,7 @@ static char process(char **token_begin, char **token_end, char *instructions_end
         parse_op(token_begin, token_end, instructions_end);
         char reg = parse_reg(*token_begin, *token_end - *token_begin);
         if (reg) {
-            *opcode = PUSH_REG;
+            *opcode = POP;
             int byte_num = write(fd, opcode, 1);
             assert(byte_num == 1);
             byte_num = write(fd, &reg, 1);
