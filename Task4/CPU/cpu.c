@@ -1,5 +1,5 @@
 #include "cpu.h"
-#include "asm.h"
+#include "../Assembler/asm.h"
 
 // assume that file is correct
 
@@ -144,5 +144,4 @@ int main(int argc, char **argv) { // file path in argv[1]
     compute(instuctions, instructions_end, &cpu);
     munmap(instuctions, size);
     return 0;
-
 }

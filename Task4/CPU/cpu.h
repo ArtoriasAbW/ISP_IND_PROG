@@ -2,13 +2,13 @@
 #define TYPE double
 #define STACK_CHECK
 
-#include "Stack.h"
+#include "../Utility/Stack.h"
 
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 
-#include "mmap_file.h"
+#include "../Utility/mmap_file.h"
 
 #define START_CAPACITY 20 // random number
 

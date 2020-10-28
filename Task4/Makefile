@@ -1,8 +1,8 @@
-ASM_FILES = asm.c mmap_file.c
+ASM_FILES = Assembler/asm.c Utility/mmap_file.c
 
-DISASM_FILES = disasm.c mmap_file.c
+DISASM_FILES = Disassembler/disasm.c Utility/mmap_file.c
 
-CPU_FILES = cpu.c mmap_file.c
+CPU_FILES = CPU/cpu.c Utility/mmap_file.c
 
 
 build_asm:
