@@ -1,7 +1,7 @@
 # CPU, assember, dissasember
 # Description
 
-Realisation CPU with stack and registers, assembler and disassembler.
+Implementation of CPU with stack and registers, assembler and disassembler.
 
 Commands available are:
 
